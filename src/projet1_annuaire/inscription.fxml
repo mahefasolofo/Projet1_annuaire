@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -64,7 +63,7 @@
          <children>
             <Button mnemonicParsing="false" text="Ajouter">
                <graphic>
-                  <FontAwesomeIconView glyphName="PLUS" />
+                  <SVGPath content="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z  M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                </graphic></Button>
             <Button mnemonicParsing="false" text="Annuler">
                <graphic>
@@ -95,7 +94,7 @@
          <children>
             <HBox fx:id="user_login" alignment="CENTER_RIGHT" layoutX="504.0" layoutY="6.0" prefHeight="31.0" prefWidth="272.0" spacing="12.0">
                <children>
-                  <FontAwesomeIconView glyphName="USER" size="20" />
+                  <SVGPath content="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" scaleX="1.2" scaleY="1.2" />
                   <Label prefHeight="21.0" prefWidth="35.0" text="User" />
                </children>
             </HBox>
