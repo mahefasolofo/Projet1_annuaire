@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
  *
  * @author Inclusiv Academy 03
  */
-public class StatistiqueController implements Initializable {
+public class MainController implements Initializable {
 
     @FXML
     private HBox user_login;
