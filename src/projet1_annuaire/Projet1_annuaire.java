@@ -5,10 +5,12 @@
  */
 package projet1_annuaire;
 
+import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +24,11 @@ public class Projet1_annuaire extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         
         Scene scene = new Scene(root);
+        
+        stage.setTitle("Ankoay");
+        File f = new File("C:\\Users\\Inclusiv\\Pictures\\icones\\icon.png");
+        Image icon = new Image(f.toURI().toString());
+        stage.getIcons().add(icon);
         
         stage.setScene(scene);
         stage.show();

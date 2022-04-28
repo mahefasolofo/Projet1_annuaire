@@ -59,16 +59,16 @@
             </HBox>
             <ScrollPane layoutX="23.0" layoutY="112.0" prefHeight="453.0" prefWidth="1102.0">
                <content>
-                  <TableView prefHeight="455.0" prefWidth="1500.0">
+                  <TableView fx:id="tableview" prefHeight="455.0" prefWidth="1500.0">
                     <columns>
-                      <TableColumn text="ID" />
-                      <TableColumn minWidth="0.0" prefWidth="150.0" text="Nom" />
-                        <TableColumn prefWidth="160.0" text="Prénom" />
-                        <TableColumn prefWidth="100.0" text="Sexe" />
-                        <TableColumn prefWidth="350.0" text="Etablissement" />
-                        <TableColumn prefWidth="200.0" text="Secteur" />
-                        <TableColumn minWidth="300.0" prefWidth="300.0" text="Localisation" />
-                        <TableColumn prefWidth="160.0" text="Rentrée Universitaire" />
+                      <TableColumn fx:id="colid" text="ID" />
+                      <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="150.0" text="Nom" />
+                        <TableColumn fx:id="colprenom" prefWidth="160.0" text="Prénom" />
+                        <TableColumn fx:id="colsexe" prefWidth="100.0" text="Sexe" />
+                        <TableColumn fx:id="coletablissement" prefWidth="350.0" text="Etablissement" />
+                        <TableColumn fx:id="colsecteur" prefWidth="200.0" text="Secteur" />
+                        <TableColumn fx:id="collocalisation" minWidth="300.0" prefWidth="300.0" text="Localisation" />
+                        <TableColumn fx:id="colrentree" prefWidth="160.0" text="Rentrée Universitaire" />
                     </columns>
                   </TableView>
                </content>
