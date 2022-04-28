@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderpane" maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.HomeController">
+   <top>
+      <Pane prefHeight="66.0" prefWidth="1143.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="191.0" />
+         </BorderPane.margin>
+         <children>
+            <Label layoutX="1066.0" layoutY="23.0" text="   User">
+               <graphic>
+                  <SVGPath content="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" scaleX="1.5" scaleY="1.5" />
+               </graphic>
+            </Label>
+         </children></Pane>
+   </top>
+   <center>
+      <AnchorPane fx:id="anchorpane" prefHeight="761.0" prefWidth="1151.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="23.0" layoutY="57.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
+               <children>
+                  <TextField prefHeight="31.0" prefWidth="519.0" promptText="Entrez vos " />
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0">
+                     <graphic>
+                        <SVGPath content="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" scaleX="1.2" scaleY="1.2" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="875.0" layoutY="606.0" prefHeight="53.0" prefWidth="236.0" spacing="25.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Modifier">
+                     <graphic>
+                        <SVGPath content="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Supprimer">
+                     <graphic>
+                        <SVGPath content="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <ScrollPane layoutX="23.0" layoutY="112.0" prefHeight="453.0" prefWidth="1102.0">
+               <content>
+                  <TableView fx:id="tableview" prefHeight="455.0" prefWidth="1500.0">
+                    <columns>
+                      <TableColumn fx:id="colid" text="ID" />
+                      <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="150.0" text="Nom" />
+                        <TableColumn fx:id="colprenom" prefWidth="160.0" text="Prénom" />
+                        <TableColumn fx:id="colsexe" prefWidth="100.0" text="Sexe" />
+                        <TableColumn fx:id="coletablissement" prefWidth="350.0" text="Etablissement" />
+                        <TableColumn fx:id="colsecteur" prefWidth="200.0" text="Secteur" />
+                        <TableColumn fx:id="collocalisation" minWidth="300.0" prefWidth="300.0" text="Localisation" />
+                        <TableColumn fx:id="colrentree" prefWidth="160.0" text="Rentrée Universitaire" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children></AnchorPane>
+   </center>
+   <left>
+      <VBox prefHeight="768.0" prefWidth="215.0" style="-fx-background-color: #233c46;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="148.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onMouseClicked="#home" prefHeight="53.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#eeeaea">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onMouseClicked="#showAjout" prefHeight="53.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Ajout" textFill="#eeeaea">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onMouseClicked="#showStatistique" prefHeight="53.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Statistique" textFill="#eeeaea">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+         </children>
+         <BorderPane.margin>
+            <Insets top="-66.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+</BorderPane>
