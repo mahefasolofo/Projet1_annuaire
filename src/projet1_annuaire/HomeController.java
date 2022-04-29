@@ -12,7 +12,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableArrayList;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -58,6 +62,10 @@ public class HomeController implements Initializable {
     
     ObservableList<Etudiant> list = observableArrayList();
 
+    public HomeController() {
+        
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -66,6 +74,100 @@ public class HomeController implements Initializable {
         // TODO
         tableset();
     }    
+
+    public TableView<Etudiant> getTableview() {
+        return tableview;
+    }
+
+    public void setTableview(TableView<Etudiant> tableview) {
+        this.tableview = tableview;
+    }
+
+    public TableColumn<Etudiant, Integer> getColid() {
+        return colid;
+    }
+
+    public void setColid(TableColumn<Etudiant, Integer> colid) {
+        this.colid = colid;
+    }
+
+    public TableColumn<Etudiant, String> getColnom() {
+        return colnom;
+    }
+
+    public void setColnom(TableColumn<Etudiant, String> colnom) {
+        this.colnom = colnom;
+    }
+
+    public TableColumn<Etudiant, String> getColprenom() {
+        return colprenom;
+    }
+
+    public void setColprenom(TableColumn<Etudiant, String> colprenom) {
+        this.colprenom = colprenom;
+    }
+
+    public TableColumn<Etudiant, String> getColsexe() {
+        return colsexe;
+    }
+
+    public void setColsexe(TableColumn<Etudiant, String> colsexe) {
+        this.colsexe = colsexe;
+    }
+
+    public TableColumn<Etudiant, String> getColetablissement() {
+        return coletablissement;
+    }
+
+    public void setColetablissement(TableColumn<Etudiant, String> coletablissement) {
+        this.coletablissement = coletablissement;
+    }
+
+    public TableColumn<Etudiant, String> getColsecteur() {
+        return colsecteur;
+    }
+
+    public void setColsecteur(TableColumn<Etudiant, String> colsecteur) {
+        this.colsecteur = colsecteur;
+    }
+
+    public TableColumn<Etudiant, String> getCollocalisation() {
+        return collocalisation;
+    }
+
+    public void setCollocalisation(TableColumn<Etudiant, String> collocalisation) {
+        this.collocalisation = collocalisation;
+    }
+
+    public TableColumn<Etudiant, String> getColrentree() {
+        return colrentree;
+    }
+
+    public void setColrentree(TableColumn<Etudiant, String> colrentree) {
+        this.colrentree = colrentree;
+    }
+
+    public ObservableList<Etudiant> getList() {
+        return list;
+    }
+
+    public void setList(ObservableList<Etudiant> list) {
+        this.list = list;
+    }
+    
+    Map <String, Integer> dictSexe = new HashMap <>();
+
+    public Map<String, Integer> getDictSexe() {
+        return dictSexe;
+    }
+    
+    public ObservableList <String> listSexe;
+
+    public ObservableList<String> getListSexe() {
+        return listSexe;
+    }
+
+    
     
     private void loadpage (String page){
         Parent source = null; 
@@ -98,7 +200,7 @@ public class HomeController implements Initializable {
         int id = 1;
         try{
             // InputStream :  pour avoir le fichier .txt toujours accessible en chemin relatif
-            String file = "C:\\Users\\Inclusiv\\Documents\\PROJET 1\\ProjectGIT\\Projet1_annuaire\\src\\projet1_annuaire\\donnees_Projet.txt";
+            String file = "src\\projet1_annuaire\\donnees_Projet.txt";
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
             System.out.println("File found");
         
@@ -121,12 +223,30 @@ public class HomeController implements Initializable {
                 etudiant.setFormation(provisoireArray[2]);
                 etudiant.setSecteur(provisoireArray[3]);
                 etudiant.setSexe(provisoireArray[4]);
+                    if (dictSexe.containsKey(provisoireArray[4])){
+                       int frequence =  dictSexe.get(provisoireArray[4]);
+                       frequence++;
+                       dictSexe.put(provisoireArray[4], frequence);
+                    }else{
+                       
+                       dictSexe.put(provisoireArray[4], 1);
+                    }
                 etudiant.setNom(provisoireArray[5]);
                 etudiant.setPrenom(provisoireArray[6]);
                 etudiant.setId(id);
                 id++;
                 list.add(etudiant);
             }
+           
+           for(Entry<String, Integer> entry : dictSexe.entrySet()){
+            //System.out.println(entry.getKey());
+            listSexe.add(entry.getKey());
+               System.out.println(listSexe);
+            }
+            System.out.println(dictSexe.toString());
+            
+            
+            
            colid.setCellValueFactory(
                     new PropertyValueFactory<Etudiant, Integer>("id")
             );

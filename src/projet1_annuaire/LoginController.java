@@ -56,7 +56,7 @@ public class LoginController implements Initializable {
     // Map <Username,Password>
     HashMap<String,String> loginInfo = new HashMap<>();
 //les datas sont stockés dans data.csv    
-    File file = new File("C:\\Users\\Inclusiv\\Documents\\PROJET 1\\ProjectGIT\\Projet1_annuaire\\src\\projet1_annuaire\\data.csv");
+    File file = new File("src\\projet1_annuaire\\data.csv");
 //on instance la class Hashage
     Hashage hash = new Hashage();
     
