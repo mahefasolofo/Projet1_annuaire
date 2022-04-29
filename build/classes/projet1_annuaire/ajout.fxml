@@ -9,33 +9,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1151.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1151.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
    <children>
       <VBox layoutX="253.0" layoutY="104.0" prefHeight="440.0" prefWidth="645.0" spacing="10.0">
          <children>
             <Label text="Nom : " />
-            <TextField prefHeight="31.0" prefWidth="414.0" />
+            <TextField fx:id="tfNom" prefHeight="31.0" prefWidth="414.0" />
             <Label text="Prénom : " />
-            <TextField />
+            <TextField fx:id="tfPrenom" />
             <Label text="Sexe : " />
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbSexe" prefWidth="150.0" />
             <Label text="Localisation : " />
-            <TextField />
+            <TextField fx:id="tfLocalisation" />
             <Label text="Secteur : " />
-            <ComboBox prefHeight="31.0" prefWidth="247.0" />
+            <ComboBox fx:id="cbSecteur" prefHeight="31.0" prefWidth="247.0" />
             <Label text="Etablissement : " />
-            <ComboBox prefHeight="31.0" prefWidth="374.0" />
+            <ComboBox fx:id="cbEtablissement" prefHeight="31.0" prefWidth="374.0" />
          </children>
       </VBox>
       <HBox layoutX="632.0" layoutY="574.0" prefHeight="54.0" prefWidth="266.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Ajouter">
+            <Button mnemonicParsing="false" onAction="#ActionAjout" prefHeight="31.0" prefWidth="108.0" text="Ajouter">
                <graphic>
                   <SVGPath content="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z  M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Annuler">
+            <Button mnemonicParsing="false" onAction="#ActionAnnuler" prefHeight="31.0" prefWidth="108.0" text="Annuler">
                <graphic>
                   <SVGPath content="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                </graphic>

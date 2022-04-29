@@ -13,7 +13,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableArrayList;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -94,7 +97,15 @@ public class HomeController implements Initializable {
         loadpage("statistique");
     }
     
-    private void tableset (){
+    //CREATION DES DICTIONNAIRES ET LISTES
+    HashMap <String, Integer> dictSexe = new HashMap <>();
+    
+    ObservableList <String> listSexe = FXCollections.observableArrayList();
+    int frequence;
+    
+    
+    
+    public void tableset (){
          String line;
         int id = 1;
         try{
@@ -115,7 +126,7 @@ public class HomeController implements Initializable {
            {
                 Etudiant etudiant = new Etudiant();
                 String[] provisoireArray = line.split(";");
-                
+
                 etudiant.setRentree(provisoireArray[0]);
                 etudiant.setLocalisation(provisoireArray[1]);
                 etudiant.setFormation(provisoireArray[2]);
@@ -126,7 +137,8 @@ public class HomeController implements Initializable {
                 etudiant.setId(id);
                 id++;
                 list.add(etudiant);
-            }
+           }
+           
            colid.setCellValueFactory(
                     new PropertyValueFactory<Etudiant, Integer>("id")
             );
@@ -161,8 +173,48 @@ public class HomeController implements Initializable {
            
         }
     
-    
-    
     }
+    
+    public void creerList (){
+        
+    }
+    
+    public ObservableList<String> makelist () throws FileNotFoundException, IOException{
+        String line;
+        String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
+        
+        while((line = br.readLine()) != null){
+            String[] provisoireArray = line.split(";");
+            if (dictSexe.containsKey(provisoireArray[4])){
+                    frequence = dictSexe.get(provisoireArray[4]);
+                    frequence++;
+                    dictSexe.put(provisoireArray[4], frequence);
+                } else {
+                    dictSexe.put(provisoireArray[4], frequence);
+                    
+                }
+         }
+        dictSexe.entrySet().forEach((entry) -> {
+            //System.out.println(entry.getKey());
+                
+            listSexe.add(entry.getKey());
+                
+        });
+        return listSexe;
+    }
+    
+
+    public HashMap<String, Integer> getDictSexe() {
+        return dictSexe;
+    }
+
+    public HomeController() {
+        
+        
+    }
+    
+    
+    
     
 }
