@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -97,11 +98,10 @@ public class HomeController implements Initializable {
          String line;
         int id = 1;
         try{
-            // InputStream :  pour avoir le fichier .txt toujours accessible en chemin relatif
-            String file = "C:\\Users\\Inclusiv\\Documents\\PROJET 1\\ProjectGIT\\Projet1_annuaire\\src\\projet1_annuaire\\donnees_Projet.txt";
+            
+            String file = "src\\projet1_annuaire\\donnees_Projet.txt";
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
-            System.out.println("File found");
-        
+           
             TableColumn rentree_Universitaire = new TableColumn("rentree");
             TableColumn nom = new TableColumn("nom");
             TableColumn prenom = new TableColumn("prenom");

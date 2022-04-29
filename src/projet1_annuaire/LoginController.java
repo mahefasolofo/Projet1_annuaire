@@ -55,8 +55,10 @@ public class LoginController implements Initializable {
     
     // Map <Username,Password>
     HashMap<String,String> loginInfo = new HashMap<>();
-//les datas sont stockés dans data.csv    
-    File file = new File("C:\\Users\\Inclusiv\\Documents\\PROJET 1\\ProjectGIT\\Projet1_annuaire\\src\\projet1_annuaire\\data.csv");
+//les datas sont stockés dans data.csv 
+    
+    File file = new File("src\\projet1_annuaire\\data.csv");
+    
 //on instance la class Hashage
     Hashage hash = new Hashage();
     
@@ -84,9 +86,10 @@ public class LoginController implements Initializable {
             } else {
                 message.setText("Erreur");
             }
-        } else{message.setText("Utilisateur non enregistré");}
+        } else{message.setText("Utilisateur non enregistré ");System.out.println(System.getProperty("user.dir")) ;}
         }catch (FileNotFoundException fileNotFoundException) {
             message.setText("Utilisateur non enregistré");
+            System.out.println(System.getProperty("user.dir")) ;
         }
     }
     
