@@ -9,7 +9,7 @@ package projet1_annuaire;
  *
  * @author Inclusiv
  */
-public class Etudiant {
+public class Etudiant implements Comparable{
     private String nom;
     private String prenom;
     private String sexe;
@@ -88,6 +88,13 @@ public class Etudiant {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public int compareTo(Object t) {
+       
+        Etudiant etudiantCompare = (Etudiant)t;
+        return nom.compareTo(etudiantCompare.nom);
     
-    
+    }
+
 }
