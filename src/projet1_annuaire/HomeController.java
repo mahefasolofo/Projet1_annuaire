@@ -15,6 +15,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableArrayList;
@@ -61,7 +62,7 @@ public class HomeController implements Initializable {
     private TableColumn<Etudiant, String> colrentree;
     
     ObservableList<Etudiant> list = observableArrayList();
-
+    
     /**
      * Initializes the controller class.
      */
@@ -165,6 +166,8 @@ public class HomeController implements Initializable {
             colsexe.setCellValueFactory(
                     new PropertyValueFactory<Etudiant, String>("sexe")
             );
+            
+            Collections.sort(list);
             tableview.setItems(list);
         }
         catch (FileNotFoundException ex) {
