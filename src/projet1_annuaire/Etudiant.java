@@ -22,6 +22,11 @@ public class Etudiant implements Comparable{
     public Etudiant() {
     }
 
+    @Override
+    public String toString() {
+        return "Etudiant{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", etablissement=" + etablissement + ", localisation=" + localisation + ", secteur=" + secteur + ", rentree=" + rentree + ", id=" + id + '}';
+    }
+
     
 
 

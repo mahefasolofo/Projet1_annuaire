@@ -35,8 +35,8 @@
          <children>
             <HBox layoutX="23.0" layoutY="57.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
                <children>
-                  <TextField prefHeight="31.0" prefWidth="519.0" promptText="Entrez vos " />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0">
+                  <TextField fx:id="fieldRecherche" prefHeight="31.0" prefWidth="519.0" promptText="Recherche" />
+                  <Button fx:id="btnRecherche" mnemonicParsing="false" onMouseClicked="#actionRecherche" prefHeight="31.0" prefWidth="69.0">
                      <graphic>
                         <SVGPath content="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" scaleX="1.2" scaleY="1.2" />
                      </graphic>

@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
@@ -21,12 +22,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.SVGPath;
 
 /**
  * FXML Controller class
@@ -41,6 +45,9 @@ public class HomeController implements Initializable {
     private AnchorPane anchorpane;
     @FXML
     private TableView<Etudiant> tableview;
+     @FXML
+    private TextField fieldRecherche;
+
     @FXML
     private TableColumn<Etudiant, Integer> colid;
     @FXML
@@ -59,6 +66,9 @@ public class HomeController implements Initializable {
     private TableColumn<Etudiant, String> colrentree;
     
     ObservableList<Etudiant> list = observableArrayList();
+    ObservableList<Etudiant> resultat = observableArrayList();
+    @FXML
+    private Button btnRecherche;
     
     /**
      * Initializes the controller class.
@@ -68,6 +78,8 @@ public class HomeController implements Initializable {
         // TODO
         tableset();
     }    
+    
+    
     
     private void loadpage (String page){
         Parent source = null; 
@@ -93,6 +105,11 @@ public class HomeController implements Initializable {
     @FXML
     private void showStatistique(MouseEvent event) {
         loadpage("statistique");
+    }
+    
+    @FXML
+    void actionRecherche(MouseEvent event) {
+        recherche();
     }
     
     private void tableset (){
@@ -128,7 +145,7 @@ public class HomeController implements Initializable {
                 id++;
                 list.add(etudiant);
             }
-           colid.setCellValueFactory(
+            colid.setCellValueFactory(
                     new PropertyValueFactory<Etudiant, Integer>("id")
             );
             
@@ -156,7 +173,9 @@ public class HomeController implements Initializable {
             );
             
             Collections.sort(list);
+           
             tableview.setItems(list);
+//            tableview.setItems(null);
         }
         catch (FileNotFoundException ex) {
            
@@ -166,6 +185,21 @@ public class HomeController implements Initializable {
     
     
     
+    }
+    
+    public void recherche(){
+        resultat.clear();
+        String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
+            System.out.println(list);
+            for (Etudiant e : list) {
+                for (String a : arrayRecherche) {
+                    if (e.toString().toLowerCase().contains(a)) {
+                        resultat.add(e);
+                    }
+                }
+            }
+        System.out.println(resultat);
+        tableview.setItems(resultat);  
     }
     
 }
