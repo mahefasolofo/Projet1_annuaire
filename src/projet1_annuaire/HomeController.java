@@ -73,6 +73,12 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnRecherche;
     
+    @FXML
+    private void actionRecherche(MouseEvent event) {
+        recherche();
+        
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -81,7 +87,6 @@ public class HomeController implements Initializable {
         // TODO
         tableset();
     }    
-    
     
     
     private void loadpage (String page){
@@ -110,7 +115,7 @@ public class HomeController implements Initializable {
         loadpage("statistique");
     }
     
-
+   // changer de class
     //CREATION DES DICTIONNAIRES ET LISTES
     HashMap <String, Integer> dictSexe = new HashMap <>();
     
@@ -120,12 +125,7 @@ public class HomeController implements Initializable {
     
     
     
-
-//    @FXML
-//    void actionRecherche(MouseEvent event) {
-//        recherche();
-//    }
-    
+   //changer de class
     private void tableset (){
 
          String line;
@@ -201,11 +201,12 @@ public class HomeController implements Initializable {
         }
     
     }
-
+    
+    //changer de class
     public void creerList (){
         
     }
-    
+    //changer de class
     public ObservableList<String> makelist () throws FileNotFoundException, IOException{
         String line;
         String file = "src\\projet1_annuaire\\donnees_Projet.txt";
@@ -231,11 +232,11 @@ public class HomeController implements Initializable {
         return listSexe;
     }
     
-
+    //changer de class
     public HashMap<String, Integer> getDictSexe() {
         return dictSexe;
     }
-
+    
     public HomeController() {
         
         
@@ -244,11 +245,10 @@ public class HomeController implements Initializable {
     
     
     
-
+    // changer de class
     public void recherche(){
         resultat.clear();
         String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
-            System.out.println(list);
             for (Etudiant e : list) {
                 for (String a : arrayRecherche) {
                     if (e.toString().toLowerCase().contains(a)) {
@@ -256,9 +256,18 @@ public class HomeController implements Initializable {
                     }
                 }
             }
-        System.out.println(resultat);
         tableview.setItems(resultat);  
     }
+
+    public TableView<Etudiant> getTableview() {
+        return tableview;
+    }
+
+    public void setTableview(TableView<Etudiant> tableview) {
+        this.tableview = tableview;
+    }
+
+    
     
 
 }
