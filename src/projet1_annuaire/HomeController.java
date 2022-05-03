@@ -126,7 +126,7 @@ public class HomeController implements Initializable {
     
     
    //changer de class
-    private void tableset (){
+    public void tableset(){
 
          String line;
         int id = 1;
@@ -240,6 +240,10 @@ public class HomeController implements Initializable {
     public HomeController() {
         
         
+    }
+
+    public ObservableList<Etudiant> getList() {
+        return list;
     }
     
     

@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import static java.util.Collections.list;
 import static javafx.collections.FXCollections.observableArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -22,13 +23,15 @@ public class Recherche{
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     
-   
+    HomeController home = new HomeController();
+    
     
 
     public Recherche() {
     }
     
     public void recherche(String fieldRecherche){
+        System.out.println(list);
         resultat.clear();
         String[] arrayRecherche = fieldRecherche.toLowerCase().split(" ");
             for (Etudiant e : list) {
