@@ -15,7 +15,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableArrayList;
 import javafx.collections.ObservableList;
@@ -42,15 +45,17 @@ public class AjoutController implements Initializable {
     @FXML
     private TextField tfPrenom;
     @FXML
-    private TextField tfLocalisation;
+    private ComboBox<String> cbSexe;
     @FXML
-    private TextField tfSexe;
+    private TextField tfLocalisation;
     @FXML
     private TextField tfSecteur;
     @FXML
-    private TextField tfEtablissement;
+    private ComboBox<String> cbEtablissement;
     @FXML
     private TextField tfRentree;
+    @FXML
+    private TextField tfId;
     @FXML
     private TextField fieldRecherche;
     @FXML
@@ -77,20 +82,28 @@ public class AjoutController implements Initializable {
     HomeController hc = new HomeController();
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
-//    ObservableList <String> listSx;
-    @FXML
-    private TextField tfId;
     
-            
+   
+    
 
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+       setCombobox(cbSexe, listSexe, dictSexe, 4);
+       setCombobox(cbEtablissement, listEtablissement , dictEtablissement, 2);
+       
+       
        
     }  
+    
+    
+   
     
     public ObservableList<Etudiant> getEtudiantList(){
         String line;
@@ -175,9 +188,9 @@ public class AjoutController implements Initializable {
         prenomProvisoire = firstLtr + restLtrs;
         
         String localisationProvisoire = tfLocalisation.getText();
-        String sexeProvisoire = tfSexe.getText();
+        String sexeProvisoire = cbSexe.getValue();
         String secteurProvisoire = tfSecteur.getText();
-        String etablissementProvisoire = tfEtablissement.getText();
+        String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         //les valeurs obtenues sont stockés dans un arrayInsert :
         String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
@@ -192,20 +205,25 @@ public class AjoutController implements Initializable {
         } catch (IOException iOException) {
             System.out.println("Erreur ajout ::: "+iOException);
         }
+        //Effacer les entrées dans les textField
+        annuler();
         
     }
 
     
     @FXML
     private void ActionAnnuler(ActionEvent event) {
-        tfNom.setText("");
+        annuler();
+     
+    }
+    public void annuler(){
+       tfNom.setText("");
         tfPrenom.setText("");
         tfLocalisation.setText("");
-        tfSexe.setText("");
+        cbSexe.setValue("");
         tfSecteur.setText("");
-        tfEtablissement.setText("");
-        
-     
+        cbEtablissement.setValue("");
+         
     }
 
     @FXML
@@ -218,10 +236,10 @@ public class AjoutController implements Initializable {
         Etudiant e=tableview.getSelectionModel().getSelectedItem();
         tfNom.setText(""+e.getNom());
         tfPrenom.setText(""+e.getPrenom());
-        tfSexe.setText(""+e.getSexe());
+        cbSexe.setValue(""+e.getSexe());
         tfLocalisation.setText(""+e.getLocalisation());
         tfSecteur.setText(""+e.getSecteur());
-        tfEtablissement.setText(""+e.getEtablissement());
+        cbEtablissement.setValue(""+e.getEtablissement());
         tfId.setText(""+e.getId());
     }
 
@@ -238,9 +256,9 @@ public class AjoutController implements Initializable {
         prenomProvisoire = firstLtr + restLtrs;
         
         String localisationProvisoire = tfLocalisation.getText();
-        String sexeProvisoire = tfSexe.getText();
+        String sexeProvisoire = cbSexe.getValue();
         String secteurProvisoire = tfSecteur.getText();
-        String etablissementProvisoire = tfEtablissement.getText();
+        String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         //les valeurs obtenues sont stockés dans un arrayInsert :
         String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
@@ -251,4 +269,46 @@ public class AjoutController implements Initializable {
     private void ActionSupprimer(MouseEvent event) {
     }
     
+    //Création des dictionnaires pour les comboboxes
+    HashMap <String, Integer> dictSexe = new HashMap <>();
+    ObservableList <String> listSexe = FXCollections.observableArrayList();
+    HashMap <String, Integer> dictEtablissement = new HashMap <>();
+    ObservableList <String> listEtablissement = FXCollections.observableArrayList();
+    int frequence;
+    
+    //ajout éléments dans listSx
+    public ObservableList<String> makelist (HashMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
+    String line;
+    String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
+
+    while((line = br.readLine()) != null){
+    String [] provisoireArray = line.split(";");
+    if (dictionnaire.containsKey(provisoireArray [rang])){
+        frequence = dictionnaire.get(provisoireArray[rang]);
+        frequence++;
+        dictionnaire.put(provisoireArray[rang], frequence);
+        } else {
+        dictionnaire.put(provisoireArray[rang], frequence);
+
+        }
+        }
+        dictionnaire.entrySet().forEach((entry) -> {
+        //System.out.println(entry.getKey());
+
+        liste.add(entry.getKey());
+
+        });
+    return liste;
+    }
+    
+    public void setCombobox (ComboBox<String> combobox, ObservableList <String> liste, HashMap <String, Integer> dictionnaire, int rang){
+        try {
+            makelist (dictionnaire, liste, rang);
+            combobox.setItems(liste);
+        } catch (IOException ex) {
+            Logger.getLogger(AjoutController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
 }
