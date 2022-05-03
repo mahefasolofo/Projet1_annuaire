@@ -1,2 +1,5 @@
-
 2022-03;Faravohitra;Inclusiv;Privé;Masculin;RASOLOFONIRINA;Mahefa
+2022-04;Lion;Ecole de commerce;Privé;Masculin;JEAN;Jean michel
+2022-03;Faravohitra;Inclusiv;Privé;Féminin;ANDRIAMANJAY;Miora
+2022-03;Faravohitra;Inclusiv;Privé;Masculin;RATOVOLALAO;Nambinina
+2022-03;Faravohitra;Inclusiv;Privé;Masculin;ANDRIAMANESY;Brian

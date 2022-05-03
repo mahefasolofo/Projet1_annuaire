@@ -132,7 +132,7 @@ public class HomeController implements Initializable {
         int id = 1;
         try{
             
-            String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+            String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
            
             TableColumn rentree_Universitaire = new TableColumn("rentree");
@@ -209,7 +209,7 @@ public class HomeController implements Initializable {
     //changer de class
     public ObservableList<String> makelist () throws FileNotFoundException, IOException{
         String line;
-        String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+        String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
         
         while((line = br.readLine()) != null){

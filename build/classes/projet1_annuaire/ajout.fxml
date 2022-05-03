@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -13,20 +14,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
    <children>
-      <VBox layoutX="1165.0" layoutY="104.0" prefHeight="440.0" prefWidth="424.0" spacing="5.0">
+      <VBox layoutX="1115.0" layoutY="96.0" prefHeight="440.0" prefWidth="424.0" spacing="5.0">
          <children>
             <Label text="Nom : " />
             <TextField fx:id="tfNom" prefHeight="31.0" prefWidth="414.0" />
             <Label text="Prénom : " />
             <TextField fx:id="tfPrenom" />
             <Label text="Sexe : " />
-            <TextField fx:id="tfSexe" />
+            <ComboBox fx:id="cbSexe" prefWidth="150.0" />
             <Label text="Localisation : " />
             <TextField fx:id="tfLocalisation" />
             <Label text="Secteur : " />
             <TextField fx:id="tfSecteur" />
             <Label text="Etablissement : " />
-            <TextField fx:id="tfEtablissement" />
+            <ComboBox fx:id="cbEtablissement" prefHeight="31.0" prefWidth="450.0" />
             <Label text="Date rentrée" />
             <TextField fx:id="tfRentree" />
          </children>
