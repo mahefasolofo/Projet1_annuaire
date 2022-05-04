@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.SVGPath;
 
+
 /**
  * FXML Controller class
  *
@@ -51,9 +51,8 @@ public class HomeController implements Initializable {
     private AnchorPane anchorpane;
     @FXML
     private TableView<Etudiant> tableview;
-     @FXML
+    @FXML
     private TextField fieldRecherche;
-
     @FXML
     private TableColumn<Etudiant, Integer> colid;
     @FXML
@@ -70,49 +69,44 @@ public class HomeController implements Initializable {
     private TableColumn<Etudiant, String> collocalisation;
     @FXML
     private TableColumn<Etudiant, String> colrentree;
-    
+    @FXML
+    private Label labelUser;
+
+//Déclaration des variables    
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
     LoginController loginC = new LoginController();
     
-    @FXML
-    private Button btnRecherche;
-    @FXML
-    private Label labelUser;
-    
-    
-    
-    @FXML
-    private void actionRecherche(MouseEvent event) {
-        recherche();
+    //CREATION DES DICTIONNAIRES ET LISTES /!\
+    HashMap <String, Integer> dictSexe = new HashMap <>();
+    ObservableList <String> listSexe = FXCollections.observableArrayList();
+    int frequence;
+    private int id = 1;
         
+//Constructeur
+    public HomeController() {
     }
+   
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         
-        labelUser.setText("Admin");
+        labelUser.setText("Admin"); // à changer par la valeur dans LoginController /!\
         tableset();
         tableview.setItems(list);
-    }    
-    
-    
-    private void loadpage (String page){
-        Parent source = null; 
-        try {
-            source  = FXMLLoader.load(getClass().getResource(page+".fxml"));
-
-        } catch (IOException ex) {
-            System.out.println(":::: Erreur chargement page source :::"+ex.toString());
-        }
-        borderpane.setCenter(source);
     }
 
+//Actions
+    @FXML
+    private void actionRecherche(MouseEvent event) {
+        recherche();
+        
+    }
+    
     @FXML
     private void home(MouseEvent event) {
         borderpane.setCenter(anchorpane);
@@ -128,17 +122,7 @@ public class HomeController implements Initializable {
         loadpage("statistique");
     }
     
-   // changer de class
-    //CREATION DES DICTIONNAIRES ET LISTES
-    HashMap <String, Integer> dictSexe = new HashMap <>();
-    
-    ObservableList <String> listSexe = FXCollections.observableArrayList();
-    int frequence;
-    
-    
-    
-    private int id = 1;
-   //changer de class
+//Méthodes fonctionnalités
     public void tableset(){
 
         String line;
@@ -214,57 +198,8 @@ public class HomeController implements Initializable {
     
     }
     
-    //changer de class
-    public void creerList (){
-        
-    }
-    //changer de class
-    public ObservableList<String> makelist () throws FileNotFoundException, IOException{
-        String line;
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
-        
-        while((line = br.readLine()) != null){
-            String[] provisoireArray = line.split(";");
-            if (dictSexe.containsKey(provisoireArray[4])){
-                    frequence = dictSexe.get(provisoireArray[4]);
-                    frequence++;
-                    dictSexe.put(provisoireArray[4], frequence);
-                } else {
-                    dictSexe.put(provisoireArray[4], frequence);
-                    
-                }
-         }
-        dictSexe.entrySet().forEach((entry) -> {
-            //System.out.println(entry.getKey());
-                
-            listSexe.add(entry.getKey());
-                
-        });
-        return listSexe;
-    }
-    
-    //changer de class
-    public HashMap<String, Integer> getDictSexe() {
-        return dictSexe;
-    }
-    
-    public HomeController() {
-        
-        
-    }
-
-    public ObservableList<Etudiant> getList() {
-        return list;
-    }
-    
-    
-    
-    
-    // changer de class
     public void recherche(){
         //pour rafraichier le tableau;
-//        tableset();
-//        list.clear();
         resultat.clear();
         tableview.setItems(null);
         
@@ -301,7 +236,23 @@ public class HomeController implements Initializable {
         
         tableview.setItems(resultat);
     }
+    
+    private void loadpage (String page){
+        Parent source = null; 
+        try {
+            source  = FXMLLoader.load(getClass().getResource(page+".fxml"));
 
+        } catch (IOException ex) {
+            System.out.println(":::: Erreur chargement page source :::"+ex.toString());
+        }
+        borderpane.setCenter(source);
+    }
+    
+    
+
+    
+    
+//Getters & Setters    
     public TableView<Etudiant> getTableview() {
         return tableview;
     }
@@ -309,10 +260,44 @@ public class HomeController implements Initializable {
     public void setTableview(TableView<Etudiant> tableview) {
         this.tableview = tableview;
     }
-
-   
-
     
+    //A VERIFIER SI UTILE
+    public HashMap<String, Integer> getDictSexe() {
+        return dictSexe;
+    }
     
+     public ObservableList<Etudiant> getList() {
+        return list;
+    }
+
+    public void setList(ObservableList<Etudiant> list) {
+        this.list = list;
+    }
+    
+     //A VERIFIER /!\
+//    public ObservableList<String> makelist () throws FileNotFoundException, IOException{
+//        String line;
+//        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
+//        
+//        while((line = br.readLine()) != null){
+//            String[] provisoireArray = line.split(";");
+//            if (dictSexe.containsKey(provisoireArray[4])){
+//                    frequence = dictSexe.get(provisoireArray[4]);
+//                    frequence++;
+//                    dictSexe.put(provisoireArray[4], frequence);
+//                } else {
+//                    dictSexe.put(provisoireArray[4], frequence);
+//                    
+//                }
+//         }
+//        dictSexe.entrySet().forEach((entry) -> {
+//            //System.out.println(entry.getKey());
+//                
+//            listSexe.add(entry.getKey());
+//                
+//        });
+//        return listSexe;
+//    }
+  
 
 }

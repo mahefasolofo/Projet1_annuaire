@@ -84,12 +84,20 @@ public class AjoutController implements Initializable {
     @FXML
     private TableColumn<Etudiant, String> colrentree;
     
+//Déclaration des variables
     HomeController hc = new HomeController();
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
     Recherche rech = new Recherche();
-
+    //Création des dictionnaires pour les comboboxes
+    HashMap <String, Integer> dictSexe = new HashMap <>();
+    ObservableList <String> listSexe = FXCollections.observableArrayList();
+    HashMap <String, Integer> dictEtablissement = new HashMap <>();
+    ObservableList <String> listEtablissement = FXCollections.observableArrayList();
+    int frequence;
+    
+//Constructeur par défaut
     public AjoutController() {
     }
     
@@ -99,19 +107,65 @@ public class AjoutController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
        
        setCombobox(cbSexe, listSexe, dictSexe, 4);
        setCombobox(cbEtablissement, listEtablissement , dictEtablissement, 2);
        getEtudiantList();
        tableview.setItems(list);
-       
-       
+        
     }  
     
+//Actions
+    @FXML
+    private void ActionAjout(ActionEvent event) {
+        ajouter();
+        //Effacer les entrées dans les textField
+        annuler();
+        
+    }
+
+    @FXML
+    private void ActionAnnuler(ActionEvent event) {
+        annuler();
+     
+    }
     
-   
-    
+
+    @FXML
+    private void actionRecherche(MouseEvent event) {
+//       tableview.setItems(rech.recherche(fieldRecherche.getText()));
+       recherche();
+    }
+
+    @FXML
+    private void tvMouseAction(MouseEvent event) {
+        Etudiant e = tableview.getSelectionModel().getSelectedItem();
+        
+        tfNom.setText(e.getNom());
+        tfPrenom.setText(e.getPrenom());
+        cbSexe.setValue(e.getSexe());
+        tfLocalisation.setText(e.getLocalisation());
+        tfSecteur.setText(e.getSecteur());
+        cbEtablissement.setValue(e.getEtablissement());
+        tfId.setText(""+e.getId());
+        tfRentree.setText(e.getRentree());
+    }
+
+    @FXML
+    private void ActionModifier(MouseEvent event) throws IOException {
+        modifier();
+        annuler();
+        
+    }
+
+    @FXML
+    private void ActionSupprimer(MouseEvent event) {
+        supprimer();
+        annuler();
+    }
+
+ //Méthodes fonctionnalités
     public ObservableList<Etudiant> getEtudiantList(){
         String line;
         int id = 1;
@@ -158,7 +212,7 @@ public class AjoutController implements Initializable {
             colsexe.setCellValueFactory(new PropertyValueFactory<>("sexe"));
             
             Collections.sort(list);  
-//            tableview.setItems(null);
+
         }
         catch (FileNotFoundException ex) {
            
@@ -167,8 +221,6 @@ public class AjoutController implements Initializable {
         }
         return list;
     }
-    
-    
     
     public void recherche(){
         getEtudiantList();
@@ -206,107 +258,6 @@ public class AjoutController implements Initializable {
         
     }
     
-    @FXML
-    private void ActionAjout(ActionEvent event) {
-        ajouter();
-        //Effacer les entrées dans les textField
-        annuler();
-        
-    }
-
-    
-    @FXML
-    private void ActionAnnuler(ActionEvent event) {
-        annuler();
-     
-    }
-    public void annuler(){
-       tfNom.setText("");
-        tfPrenom.setText("");
-        tfLocalisation.setText("");
-        cbSexe.setValue("");
-        tfSecteur.setText("");
-        cbEtablissement.setValue("");
-        tfRentree.setText("");
-        tfId.setText("");
-         
-    }
-
-    @FXML
-    private void actionRecherche(MouseEvent event) {
-//       tableview.setItems(rech.recherche(fieldRecherche.getText()));
-       recherche();
-    }
-
-    @FXML
-    private void tvMouseAction(MouseEvent event) {
-        Etudiant e=tableview.getSelectionModel().getSelectedItem();
-        tfNom.setText(""+e.getNom());
-        tfPrenom.setText(""+e.getPrenom());
-        cbSexe.setValue(""+e.getSexe());
-        tfLocalisation.setText(""+e.getLocalisation());
-        tfSecteur.setText(""+e.getSecteur());
-        cbEtablissement.setValue(""+e.getEtablissement());
-        tfId.setText(""+e.getId());
-        tfRentree.setText(""+e.getRentree());
-    }
-
-    @FXML
-    private void ActionModifier(MouseEvent event) throws IOException {
-        modifier();
-        annuler();
-        
-    }
-
-    @FXML
-    private void ActionSupprimer(MouseEvent event) {
-        supprimer();
-        annuler();
-    }
-    
-    //Création des dictionnaires pour les comboboxes
-    HashMap <String, Integer> dictSexe = new HashMap <>();
-    ObservableList <String> listSexe = FXCollections.observableArrayList();
-    HashMap <String, Integer> dictEtablissement = new HashMap <>();
-    ObservableList <String> listEtablissement = FXCollections.observableArrayList();
-    int frequence;
-    
-    //ajout éléments dans listSx
-    public ObservableList<String> makelist (HashMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
-    String line;
-//    String file = "src\\projet1_annuaire\\donnees_Projet.txt";
-    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
-
-    while((line = br.readLine()) != null){
-    String [] provisoireArray = line.split(";");
-    if (dictionnaire.containsKey(provisoireArray [rang])){
-        frequence = dictionnaire.get(provisoireArray[rang]);
-        frequence++;
-        dictionnaire.put(provisoireArray[rang], frequence);
-        } else {
-        dictionnaire.put(provisoireArray[rang], frequence);
-
-        }
-        }
-        dictionnaire.entrySet().forEach((entry) -> {
-        //System.out.println(entry.getKey());
-
-        liste.add(entry.getKey());
-
-        });
-    return liste;
-    }
-    
-    public void setCombobox (ComboBox<String> combobox, ObservableList <String> liste, HashMap <String, Integer> dictionnaire, int rang){
-        try {
-            makelist (dictionnaire, liste, rang);
-            combobox.setItems(liste);
-        } catch (IOException ex) {
-            Logger.getLogger(AjoutController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    }
-    
     private void modifier() throws IOException{
         FileWriter w= new FileWriter(file,false);
         BufferedWriter bw = new BufferedWriter(w);
@@ -328,31 +279,27 @@ public class AjoutController implements Initializable {
         String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         int idProvisoire = Integer.parseInt(tfId.getText());
-               
-        //String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
-        //créer un array provisoire pour stocker les valeurs
-        
-        //faire une boucle forEach de la liste pour comparer tout le contenu de la liste
-        //et le comparer avec l'ID de l'élément sélectionné dans la tableview 
-        //supprimer l'Etudaint dans la liste
+         
+        //supprimer l'Etudiant dans la liste
         for(Etudiant a:list){
             if(e.getId() == a.getId()){
                 list.remove(a);
                 break;
             }
         } 
-        System.out.println(list);
+        
         //Créer un nouveau Etudiant et  l'insérer dans la liste
         Etudiant newEtudiant = new Etudiant(idProvisoire, nomProvisoire, prenomProvisoire, sexeProvisoire, etablissementProvisoire, localisationProvisoire, secteurProvisoire, rentreeProvisoire);
         list.add(newEtudiant);
         
-        //pour chaque Etudiant dans la nouvelle list ajouter dans bw 
+        //pour chaque Etudiant dans la nouvelle liste ajouter dans bw 
         for(Etudiant i:list){
             bw.write(i.toString2());
         }
          bw.close();
         
         tableview.setItems(list);
+        hc.setList(list);
         
     }
     
@@ -404,22 +351,69 @@ public class AjoutController implements Initializable {
         Etudiant newEtudiant = new Etudiant(0, nomProvisoire, prenomProvisoire, sexeProvisoire, etablissementProvisoire, localisationProvisoire, secteurProvisoire, rentreeProvisoire);
         //Utilisation de BufferedWriter pour ajouter les données reçu dans notre fichier .txt /!\fichier .txt d'essai : lien à changer plus tard ! 
         try {
-            //Soloina an'ilay file efa déclaré eny ambony
-//            String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+           
             FileWriter fw = new FileWriter(file, true);            
             BufferedWriter bw = new BufferedWriter(fw);
             list.add(newEtudiant);
         
-        //pour chaque Etudiant dans la nouvelle list ajouter dans bw 
-            for(Etudiant i:list){
-                bw.write(i.toString2());
-            }
-           bw.close();
+            bw.write(newEtudiant.toString2());
+            bw.close();
         } catch (IOException iOException) {
             System.out.println("Erreur ajout ::: "+iOException);
         }
         tableview.setItems(list);
         
     }
+    
+    public void annuler(){
+       tfNom.setText("");
+        tfPrenom.setText("");
+        tfLocalisation.setText("");
+        cbSexe.setValue("");
+        tfSecteur.setText("");
+        cbEtablissement.setValue("");
+        tfRentree.setText("");
+        tfId.setText("");
+         
+    }
+    
+//Constitution Combobox 
+    
+    public ObservableList<String> makelist (HashMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
+    String line;
+
+    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
+
+    while((line = br.readLine()) != null){
+    String [] provisoireArray = line.split(";");
+    if (dictionnaire.containsKey(provisoireArray [rang])){
+        frequence = dictionnaire.get(provisoireArray[rang]);
+        frequence++;
+        dictionnaire.put(provisoireArray[rang], frequence);
+        } else {
+        dictionnaire.put(provisoireArray[rang], frequence);
+
+        }
+        }
+        dictionnaire.entrySet().forEach((entry) -> {
+        //System.out.println(entry.getKey());
+
+        liste.add(entry.getKey());
+
+        });
+    return liste;
+    }
+    
+    public void setCombobox (ComboBox<String> combobox, ObservableList <String> liste, HashMap <String, Integer> dictionnaire, int rang){
+        try {
+            makelist (dictionnaire, liste, rang);
+            combobox.setItems(liste);
+        } catch (IOException ex) {
+            Logger.getLogger(AjoutController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
 }
 
