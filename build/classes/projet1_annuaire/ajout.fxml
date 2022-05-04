@@ -87,5 +87,6 @@
          </children>
       </HBox>
       <TextField fx:id="tfId" layoutX="1165.0" layoutY="61.0" visible="false" />
+      <TextField fx:id="tfId" layoutX="1115.0" layoutY="61.0" />
    </children>
 </AnchorPane>

@@ -252,6 +252,10 @@ public class HomeController implements Initializable {
     
     // changer de class
     public void recherche(){
+        //pour rafraichier le tableau;
+//        tableview.getItems().clear();
+//        list.clear();
+        
         resultat.clear();
         String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
             for (Etudiant e : list) {

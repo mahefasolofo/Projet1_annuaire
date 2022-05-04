@@ -278,17 +278,12 @@ public class AjoutController implements Initializable {
     
     private void modifier() throws IOException{
         FileWriter w= new FileWriter(file,false);
+        BufferedWriter bw = new BufferedWriter(w);
         //Ecrire sur textField
          Etudiant e = tableview.getSelectionModel().getSelectedItem();
          
-//        tfNom.setText(e.getNom());
-//        tfPrenom.setText(e.getPrenom());
-//        cbSexe.setValue(e.getSexe());
-//        tfLocalisation.setText(e.getLocalisation());
-//        tfSecteur.setText(e.getSecteur());
-//        cbEtablissement.setValue(e.getEtablissement());
-//        tfRentree.setText(e.getRentree());
-        //
+     
+    //Récupérer les valeurs de l'élément sélectionner dans le textFIeld et les mettre dans des variables temporaires
         String nomProvisoire = tfNom.getText().toUpperCase();
         String prenomProvisoire = tfPrenom.getText();
         String firstLtr = prenomProvisoire.substring(0, 1);
@@ -301,35 +296,32 @@ public class AjoutController implements Initializable {
         String secteurProvisoire = tfSecteur.getText();
         String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
+        int idProvisoire = Integer.parseInt(tfId.getText());
+               
+        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
+        //créer un array provisoire pour stocker les valeurs
         
-//        
-//        //ajouter la nouvelle liste dans file
-//        for(Etudiant a:list){
-//                w.write(e.toString2());
-//            }
-//        try {
-//            w.close();
-            //les valeurs obtenues sont stockés dans un arrayInsert :
-//        } catch (IOException ex) {
-//            Logger.getLogger(AjoutController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
-//        System.out.println(arrayInsert[0]+arrayInsert[1]+arrayInsert[2]+arrayInsert[3]+arrayInsert[4]+arrayInsert[5]);
-//        
-//        String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
-//        try {
-//            
-//            FileWriter fw = new FileWriter(filePath, true);            
-//            BufferedWriter bw = new BufferedWriter(fw);
-//            bw.write(arrayInsert[0] + ";" + arrayInsert[1] + ";" + arrayInsert[2] + ";" + arrayInsert[3] + ";" + arrayInsert[4] + ";" + arrayInsert[5] + ";" + arrayInsert[6] + "\n");
-//            //soloina an'ilay toString2
-//            bw.close();
-//
-//        } catch (IOException iOException) {
-//        }
-//        
-//            
+        //faire une boucle forEach de la liste pour comparer tout le contenu de la liste
+        //et le comparer avec l'ID de l'élément sélectionné dans la tableview 
+        //supprimer l'Etudaint dans la liste
+        for(Etudiant a:list){
+            if(e.getId() == a.getId()){
+                list.remove(a);
+                break;
+            }
+        } 
+        System.out.println(list);
+        //Créer un nouveau Etudiant et  l'insérer dans la liste
+        Etudiant newEtudiant = new Etudiant(idProvisoire, nomProvisoire, prenomProvisoire, sexeProvisoire, etablissementProvisoire, localisationProvisoire, secteurProvisoire, rentreeProvisoire);
+        list.add(newEtudiant);
+        System.out.println(list);
+        //pour chaque Etudiant dans la nouvelle list ajouter dans bw 
+        for(Etudiant i:list){
+            bw.write(i.toString2());
+        }
+         bw.close();
+        
+       
         
     }
     

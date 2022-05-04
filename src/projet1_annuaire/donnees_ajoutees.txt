@@ -1,6 +1,6 @@
-2001-02;Loudéac;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;DE FONCLARE;Cyril
-2001-02;Loudéac;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Masculin;DAUBIE;Romain
-2001-02;Lamballe;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BERNARD;Jacky
-2001-02;Guingamp;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Feminin;LAMURE;Raphaël
 2001-02;Dinan;Écoles paramédicales et sociales;Établissements publics;Feminin;CAMPION;Alain
+2001-02;Loudéac;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Masculin;DAUBIE;Romain
+2001-02;Loudéac;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;DE FONCLARE;Cyril
 2001-02;Dinan;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;FORESTIER;Jean-Christian
+2001-02;Guingamp;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Feminin;LAMURE;Raphaël
+2001-02;Lamballe;Total des formations d'enseignement supérieur;Établissements publics;Masculin;BERNARD;Jacky
