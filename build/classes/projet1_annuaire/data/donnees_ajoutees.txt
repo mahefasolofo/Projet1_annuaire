@@ -2999,3 +2999,4 @@
 2001-02;Ajaccio;Ecoles de commerce, gestion et comptabilité;Établissements privés;Masculin;FOREST;Franck
 2021-03;Fianarantsoa;Universités;Privé;Masculin;RAKOTO;Jean
 2002-02;Antananarivo;Grands établissements MENESR;Privé;Masculin;RALAIMONGO;Jean
+2022-03;Antananarivo;Universités de technologie (UT);Etablissement Privé;Feminin;ANDRIAMANJAY;Miora

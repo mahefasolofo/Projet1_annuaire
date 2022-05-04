@@ -52,7 +52,9 @@ public class HomeController implements Initializable {
     @FXML
     private TableView<Etudiant> tableview;
     @FXML
-    private TextField fieldRecherche;
+    private TextField tfRecherche;
+    @FXML
+    private Button btnRecherche;
     @FXML
     private TableColumn<Etudiant, Integer> colid;
     @FXML
@@ -83,6 +85,7 @@ public class HomeController implements Initializable {
     ObservableList <String> listSexe = FXCollections.observableArrayList();
     int frequence;
     private int id = 1;
+    
         
 //Constructeur
     public HomeController() {
@@ -204,7 +207,7 @@ public class HomeController implements Initializable {
         tableview.setItems(null);
         
         HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
-        String[] arrayRecherche= fieldRecherche.getText().toLowerCase().split(" ");
+        String[] arrayRecherche= tfRecherche.getText().toLowerCase().split(" ");
         List<Integer> listId = new ArrayList<Integer>();
         for(Etudiant e:list){
             for (String a : arrayRecherche) {

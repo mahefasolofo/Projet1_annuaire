@@ -62,7 +62,7 @@ public class AjoutController implements Initializable {
     @FXML
     private TextField tfId;
     @FXML
-    private TextField fieldRecherche;
+    private TextField tfRecherche;
     @FXML
     private Button btnRecherche;
     @FXML
@@ -96,6 +96,7 @@ public class AjoutController implements Initializable {
     HashMap <String, Integer> dictEtablissement = new HashMap <>();
     ObservableList <String> listEtablissement = FXCollections.observableArrayList();
     int frequence;
+    
     
 //Constructeur par défaut
     public AjoutController() {
@@ -134,7 +135,7 @@ public class AjoutController implements Initializable {
 
     @FXML
     private void actionRecherche(MouseEvent event) {
-//       tableview.setItems(rech.recherche(fieldRecherche.getText()));
+
        recherche();
     }
 
@@ -227,7 +228,7 @@ public class AjoutController implements Initializable {
         resultat.clear();
         tableview.setItems(null);
         HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
-        String[] arrayRecherche= fieldRecherche.getText().toLowerCase().split(" ");
+        String[] arrayRecherche= tfRecherche.getText().toLowerCase().split(" ");
         List<Integer> listId = new ArrayList<Integer>();
         for(Etudiant e:list){
             for (String a : arrayRecherche) {
