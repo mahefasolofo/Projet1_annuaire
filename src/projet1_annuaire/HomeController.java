@@ -75,7 +75,7 @@ public class HomeController implements Initializable {
 //Déclaration des variables    
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
-    String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+    String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
     LoginController loginC = new LoginController();
     
     //CREATION DES DICTIONNAIRES ET LISTES /!\

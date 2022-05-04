@@ -49,7 +49,7 @@ public class StatistiqueController implements Initializable {
         String line;
         Map<String,Integer> map=new HashMap<>();
       
-        String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+        String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
         BufferedReader br = null;
         
         try {

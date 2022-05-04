@@ -88,7 +88,7 @@ public class AjoutController implements Initializable {
     HomeController hc = new HomeController();
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
-    String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+    String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
     Recherche rech = new Recherche();
     //Création des dictionnaires pour les comboboxes
     HashMap <String, Integer> dictSexe = new HashMap <>();

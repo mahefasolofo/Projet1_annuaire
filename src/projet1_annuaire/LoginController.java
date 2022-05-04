@@ -49,20 +49,16 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
     
-    // Map <Username,Password>
+//Déclaration des variables
     HashMap<String,String> loginInfo = new HashMap<>();
-//les datas sont stockés dans data.csv 
-    
-    File file = new File("src\\projet1_annuaire\\data.csv");
-    
-//on instance la class Hashage
+    File file = new File("src\\projet1_annuaire\\data\\data.csv");
     Hashage hash = new Hashage();
     
-
+//Actions & methodes
     @FXML
     private void connectClick(MouseEvent event) throws IOException {
         String username = user.getText();
