@@ -26,6 +26,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -70,8 +71,15 @@ public class HomeController implements Initializable {
     
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
+    String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+    LoginController loginC = new LoginController();
+    
     @FXML
     private Button btnRecherche;
+    @FXML
+    private Label labelUser;
+    
+    
     
     @FXML
     private void actionRecherche(MouseEvent event) {
@@ -85,6 +93,8 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        labelUser.setText("Admin");
         tableset();
     }    
     
@@ -124,15 +134,15 @@ public class HomeController implements Initializable {
     
     
     
-    
+    private int id = 1;
    //changer de class
     public void tableset(){
 
-         String line;
-        int id = 1;
+        String line;
+        
         try{
             
-            String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+            
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
            
             TableColumn rentree_Universitaire = new TableColumn("rentree");
@@ -255,17 +265,17 @@ public class HomeController implements Initializable {
         //pour rafraichier le tableau;
 //        tableview.getItems().clear();
 //        list.clear();
-        
+        tableview.setItems(null);
         resultat.clear();
         String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
             for (Etudiant e : list) {
                 for (String a : arrayRecherche) {
-                    if (e.toString().toLowerCase().contains(a)) {
+                    if (e.toString2().toLowerCase().contains(a)) {
                         resultat.add(e);
                     }
                 }
             }
-        tableview.setItems(resultat);  
+        tableview.setItems(resultat);
     }
 
     public TableView<Etudiant> getTableview() {
@@ -275,6 +285,8 @@ public class HomeController implements Initializable {
     public void setTableview(TableView<Etudiant> tableview) {
         this.tableview = tableview;
     }
+
+   
 
     
     

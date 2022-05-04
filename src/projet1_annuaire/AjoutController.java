@@ -14,8 +14,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,9 +85,6 @@ public class AjoutController implements Initializable {
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
-   
-    
-
     
     
     /**
@@ -94,10 +93,11 @@ public class AjoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+       
        setCombobox(cbSexe, listSexe, dictSexe, 4);
        setCombobox(cbEtablissement, listEtablissement , dictEtablissement, 2);
-       
+       getEtudiantList();
+       tableview.setItems(list);
        
        
     }  
@@ -108,6 +108,7 @@ public class AjoutController implements Initializable {
     public ObservableList<Etudiant> getEtudiantList(){
         String line;
         int id = 1;
+        list.clear();
         try{
             
             
@@ -160,20 +161,44 @@ public class AjoutController implements Initializable {
         return list;
     }
     
+    //Hash map utilisé dans recherche multicritère
+    HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+    
     public void recherche(){
         getEtudiantList();
         resultat.clear();
-        String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
-        list.forEach((e) -> {
+        tableview.setItems(null);
+        String[] arrayRecherche= fieldRecherche.getText().toLowerCase().split(" ");
+        List<Integer> listId = new ArrayList<Integer>();
+        for(Etudiant e:list){
             for (String a : arrayRecherche) {
-                if (e.toString().toLowerCase().contains(a)) {
-                    resultat.add(e);
+                if(e.toString().toLowerCase().contains(a)) {
+                    if(resultOccurence.containsKey(e.getId()) != true){
+                        resultOccurence.put(e.getId(), 1);
+                    }else{
+                        resultOccurence.merge(e.getId(), 1, Integer::sum);
+                    }
+                    
                 }
+                     
             }
-        });
-        tableview.setItems(resultat);
-//        resultat.clear();
         
+        }
+        for ( int key : resultOccurence.keySet() ) {
+            if(resultOccurence.get(key) == arrayRecherche.length){
+                listId.add(key);
+            }
+        }
+        
+        for(Etudiant e:list){
+            for(int id : listId){
+                if(id == e.getId())
+                    resultat.add(e);
+            }
+        }
+        listId.clear();
+        
+        tableview.setItems(resultat);
         
     }
     
@@ -199,6 +224,7 @@ public class AjoutController implements Initializable {
         tfSecteur.setText("");
         cbEtablissement.setValue("");
         tfRentree.setText("");
+        tfId.setText("");
          
     }
 
@@ -298,7 +324,7 @@ public class AjoutController implements Initializable {
         String rentreeProvisoire = tfRentree.getText();
         int idProvisoire = Integer.parseInt(tfId.getText());
                
-        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
+        //String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
         //créer un array provisoire pour stocker les valeurs
         
         //faire une boucle forEach de la liste pour comparer tout le contenu de la liste
@@ -314,14 +340,14 @@ public class AjoutController implements Initializable {
         //Créer un nouveau Etudiant et  l'insérer dans la liste
         Etudiant newEtudiant = new Etudiant(idProvisoire, nomProvisoire, prenomProvisoire, sexeProvisoire, etablissementProvisoire, localisationProvisoire, secteurProvisoire, rentreeProvisoire);
         list.add(newEtudiant);
-        System.out.println(list);
+        
         //pour chaque Etudiant dans la nouvelle list ajouter dans bw 
         for(Etudiant i:list){
             bw.write(i.toString2());
         }
          bw.close();
         
-       
+        tableview.setItems(list);
         
     }
     
@@ -349,6 +375,7 @@ public class AjoutController implements Initializable {
              w.close();
        }catch(IOException e){
        }
+          tableview.setItems(list);
     }
     
     public void ajouter(){
@@ -368,20 +395,26 @@ public class AjoutController implements Initializable {
         String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         //les valeurs obtenues sont stockés dans un arrayInsert :
-        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
-        
+        //String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
+        Etudiant newEtudiant = new Etudiant(0, nomProvisoire, prenomProvisoire, sexeProvisoire, etablissementProvisoire, localisationProvisoire, secteurProvisoire, rentreeProvisoire);
         //Utilisation de BufferedWriter pour ajouter les données reçu dans notre fichier .txt /!\fichier .txt d'essai : lien à changer plus tard ! 
         try {
             //Soloina an'ilay file efa déclaré eny ambony
-            String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
-            FileWriter fw = new FileWriter(filePath, true);            
+//            String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+            FileWriter fw = new FileWriter(file, true);            
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(arrayInsert[0]+";"+arrayInsert[1]+";"+arrayInsert[2]+";"+arrayInsert[3]+";"+arrayInsert[4]+";"+arrayInsert[5]+";"+arrayInsert[6]+"\n");
-            //soloina an'ilay toString2
-            bw.close();
+            list.add(newEtudiant);
+        
+        //pour chaque Etudiant dans la nouvelle list ajouter dans bw 
+            for(Etudiant i:list){
+                bw.write(i.toString2());
+            }
+           bw.close();
         } catch (IOException iOException) {
             System.out.println("Erreur ajout ::: "+iOException);
         }
+        tableview.setItems(list);
+        
     }
 }
 

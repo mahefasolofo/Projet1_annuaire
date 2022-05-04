@@ -17,20 +17,21 @@
 
 <BorderPane fx:id="borderpane" maxHeight="768.0" maxWidth="1910.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.HomeController">
    <top>
-      <Pane prefHeight="66.0" prefWidth="1143.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="66.0" prefWidth="1143.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER_RIGHT">
          <BorderPane.margin>
             <Insets left="191.0" />
          </BorderPane.margin>
          <children>
-            <Label layoutX="1484.0" layoutY="23.0" text="   User">
-               <graphic>
+            <HBox alignment="CENTER_RIGHT" layoutX="1353.0" layoutY="-1.0" prefHeight="68.0" prefWidth="200.0" spacing="12.0">
+               <children>
                   <SVGPath content="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" scaleX="1.5" scaleY="1.5" />
-               </graphic>
-            </Label>
+                  <Label fx:id="labelUser" text="   User" />
+               </children>
+            </HBox>
          </children></Pane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorpane" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
          <children>
             <HBox layoutX="497.0" layoutY="36.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
                <children>
@@ -61,7 +62,7 @@
          </children></AnchorPane>
    </center>
    <left>
-      <VBox prefHeight="768.0" prefWidth="215.0" style="-fx-background-color: #233c46;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="768.0" prefWidth="184.0" style="-fx-background-color: #233c46;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="148.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" />
             <Button mnemonicParsing="false" onMouseClicked="#home" prefHeight="53.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#eeeaea">

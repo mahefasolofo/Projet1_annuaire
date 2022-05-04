@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
+<AnchorPane centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1514.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
    <children>
-      <VBox layoutX="1115.0" layoutY="96.0" prefHeight="440.0" prefWidth="424.0" spacing="5.0">
+      <VBox layoutX="1060.0" layoutY="99.0" prefHeight="512.0" prefWidth="424.0" spacing="10.0">
          <children>
             <Label text="Nom : " />
             <TextField fx:id="tfNom" prefHeight="31.0" prefWidth="414.0" />
@@ -32,21 +32,7 @@
             <TextField fx:id="tfRentree" />
          </children>
       </VBox>
-      <HBox layoutX="1244.0" layoutY="620.0" prefHeight="54.0" prefWidth="266.0" spacing="25.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#ActionAjout" prefHeight="31.0" prefWidth="108.0" text="Ajouter">
-               <graphic>
-                  <SVGPath content="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z  M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#ActionAnnuler" prefHeight="31.0" prefWidth="108.0" text="Annuler">
-               <graphic>
-                  <SVGPath content="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-      <HBox layoutX="253.0" layoutY="49.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
+      <HBox layoutX="225.0" layoutY="22.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
          <children>
             <TextField fx:id="fieldRecherche" prefHeight="31.0" prefWidth="519.0" promptText="Recherche" />
             <Button fx:id="btnRecherche" mnemonicParsing="false" onMouseClicked="#actionRecherche" prefHeight="31.0" prefWidth="69.0">
@@ -56,9 +42,9 @@
             </Button>
          </children>
       </HBox>
-      <Pane layoutX="14.0" layoutY="127.0">
+      <Pane layoutX="48.0" layoutY="96.0" prefHeight="593.0" prefWidth="857.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="553.0" AnchorPane.topAnchor="96.0">
          <children>
-            <TableView fx:id="tableview" onMouseClicked="#tvMouseAction" prefHeight="378.0" prefWidth="1064.0">
+            <TableView fx:id="tableview" layoutX="8.0" onMouseClicked="#tvMouseAction" prefHeight="560.0" prefWidth="840.0">
                <columns>
                   <TableColumn fx:id="colid" text="ID" />
                   <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="150.0" text="Nom" />
@@ -72,11 +58,23 @@
             </TableView>
          </children>
       </Pane>
-      <HBox layoutX="429.0" layoutY="621.0" prefHeight="53.0" prefWidth="236.0" spacing="25.0">
+      <TextField fx:id="tfId" layoutX="1165.0" layoutY="61.0" visible="false" />
+      <TextField fx:id="tfId" layoutX="1115.0" layoutY="61.0" visible="false" />
+      <VBox layoutX="926.0" layoutY="471.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#ActionAjout" prefHeight="31.0" prefWidth="108.0" text="Ajouter">
+               <graphic>
+                  <SVGPath content="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z  M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+               </graphic>
+            </Button>
             <Button mnemonicParsing="false" onMouseClicked="#ActionModifier" prefHeight="31.0" prefWidth="108.0" text="Modifier">
                <graphic>
                   <SVGPath content="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#ActionAnnuler" prefHeight="31.0" prefWidth="108.0" text="Annuler">
+               <graphic>
+                  <SVGPath content="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                </graphic>
             </Button>
             <Button mnemonicParsing="false" onMouseClicked="#ActionSupprimer" prefHeight="31.0" prefWidth="108.0" text="Supprimer">
@@ -85,8 +83,6 @@
                </graphic>
             </Button>
          </children>
-      </HBox>
-      <TextField fx:id="tfId" layoutX="1165.0" layoutY="61.0" visible="false" />
-      <TextField fx:id="tfId" layoutX="1115.0" layoutY="61.0" />
+      </VBox>
    </children>
 </AnchorPane>

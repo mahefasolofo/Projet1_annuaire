@@ -3,27 +3,30 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1151.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1151.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.StatistiqueController">
    <children>
-      <HBox layoutX="132.0" layoutY="65.0" prefHeight="31.0" prefWidth="286.0" spacing="30.0">
-         <children>
-            <Label text="Données :" />
-            <ComboBox prefWidth="150.0" />
-         </children>
-      </HBox>
-      <BarChart layoutX="132.0" layoutY="151.0" prefHeight="400.0" prefWidth="887.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
+      <HBox layoutX="132.0" layoutY="65.0" prefHeight="31.0" prefWidth="286.0" spacing="30.0" />
+      <BarChart fx:id="barchart" layoutX="117.0" layoutY="97.0" prefHeight="484.0" prefWidth="940.0">
+         <xAxis>
+            <NumberAxis fx:id="genreOrdonnee" side="LEFT">
+               <tickLabelFont>
+                  <Font size="11.0" />
+               </tickLabelFont>
+            </NumberAxis>
+         </xAxis>
+         <yAxis>
+            <CategoryAxis fx:id="etablissementAbscisse" label="Etablissement" side="BOTTOM" />
+         </yAxis>
       </BarChart>
+      <Label layoutX="477.0" layoutY="37.0" text="Statistique">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
