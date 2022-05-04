@@ -148,7 +148,7 @@ public class HomeController implements Initializable {
            {
                 Etudiant etudiant = new Etudiant();
                 String[] provisoireArray = line.split(";");
-
+                if(provisoireArray.length==7){
                 etudiant.setRentree(provisoireArray[0]);
                 etudiant.setLocalisation(provisoireArray[1]);
                 etudiant.setFormation(provisoireArray[2]);
@@ -156,6 +156,7 @@ public class HomeController implements Initializable {
                 etudiant.setSexe(provisoireArray[4]);
                 etudiant.setNom(provisoireArray[5]);
                 etudiant.setPrenom(provisoireArray[6]);
+                }
                 etudiant.setId(id);
                 id++;
                 list.add(etudiant);

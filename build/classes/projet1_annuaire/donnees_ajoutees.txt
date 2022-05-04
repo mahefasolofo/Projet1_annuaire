@@ -1,5 +1,9 @@
-2022-03;Faravohitra;Inclusiv;Privé;Masculin;RASOLOFONIRINA;Mahefa
-2022-04;Lion;Ecole de commerce;Privé;Masculin;JEAN;Jean michel
-2022-03;Faravohitra;Inclusiv;Privé;Féminin;ANDRIAMANJAY;Miora
-2022-03;Faravohitra;Inclusiv;Privé;Masculin;RATOVOLALAO;Nambinina
-2022-03;Faravohitra;Inclusiv;Privé;Masculin;ANDRIAMANESY;Brian
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Masculin;AUGEZ;Denis
+2001-02;Toulon;Écoles supérieures art et culture;Établissements privés;Feminin;AUGEZ;Denis

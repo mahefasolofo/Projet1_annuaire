@@ -82,7 +82,7 @@ public class AjoutController implements Initializable {
     HomeController hc = new HomeController();
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
-    
+    String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
    
     
 
@@ -110,7 +110,7 @@ public class AjoutController implements Initializable {
         int id = 1;
         try{
             
-            String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+            
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
            
             TableColumn rentree_Universitaire = new TableColumn("rentree");
@@ -172,39 +172,14 @@ public class AjoutController implements Initializable {
             }
         });
         tableview.setItems(resultat);
+//        resultat.clear();
+        
         
     }
     
     @FXML
     private void ActionAjout(ActionEvent event) {
-        //récupérer les valeurs dans les textField on mettant Nom en UpperCase et Prenom première lettre majuscule reste pas
-        String nomProvisoire = tfNom.getText().toUpperCase();
-        String prenomProvisoire = tfPrenom.getText();
-        
-        String firstLtr = prenomProvisoire.substring(0, 1);
-        String restLtrs = prenomProvisoire.substring(1, prenomProvisoire.length());
-        firstLtr = firstLtr.toUpperCase();
-        restLtrs = restLtrs.toLowerCase();
-        prenomProvisoire = firstLtr + restLtrs;
-        
-        String localisationProvisoire = tfLocalisation.getText();
-        String sexeProvisoire = cbSexe.getValue();
-        String secteurProvisoire = tfSecteur.getText();
-        String etablissementProvisoire = cbEtablissement.getValue();
-        String rentreeProvisoire = tfRentree.getText();
-        //les valeurs obtenues sont stockés dans un arrayInsert :
-        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
-        
-        //Utilisation de BufferedWriter pour ajouter les données reçu dans notre fichier .txt /!\fichier .txt d'essai : lien à changer plus tard ! 
-        try {
-            String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
-            FileWriter fw = new FileWriter(filePath, true);            
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(arrayInsert[0]+";"+arrayInsert[1]+";"+arrayInsert[2]+";"+arrayInsert[3]+";"+arrayInsert[4]+";"+arrayInsert[5]+";"+arrayInsert[6]+"\n");
-            bw.close();
-        } catch (IOException iOException) {
-            System.out.println("Erreur ajout ::: "+iOException);
-        }
+        ajouter();
         //Effacer les entrées dans les textField
         annuler();
         
@@ -223,6 +198,7 @@ public class AjoutController implements Initializable {
         cbSexe.setValue("");
         tfSecteur.setText("");
         cbEtablissement.setValue("");
+        tfRentree.setText("");
          
     }
 
@@ -241,32 +217,20 @@ public class AjoutController implements Initializable {
         tfSecteur.setText(""+e.getSecteur());
         cbEtablissement.setValue(""+e.getEtablissement());
         tfId.setText(""+e.getId());
+        tfRentree.setText(""+e.getRentree());
     }
 
     @FXML
-    private void ActionModifier(MouseEvent event) {
-        //récupérer les données dans les TextField dans les variables provisoires
-        String nomProvisoire = tfNom.getText().toUpperCase();
-        String prenomProvisoire = tfPrenom.getText();
+    private void ActionModifier(MouseEvent event) throws IOException {
+        modifier();
+        annuler();
         
-        String firstLtr = prenomProvisoire.substring(0, 1);
-        String restLtrs = prenomProvisoire.substring(1, prenomProvisoire.length());
-        firstLtr = firstLtr.toUpperCase();
-        restLtrs = restLtrs.toLowerCase();
-        prenomProvisoire = firstLtr + restLtrs;
-        
-        String localisationProvisoire = tfLocalisation.getText();
-        String sexeProvisoire = cbSexe.getValue();
-        String secteurProvisoire = tfSecteur.getText();
-        String etablissementProvisoire = cbEtablissement.getValue();
-        String rentreeProvisoire = tfRentree.getText();
-        //les valeurs obtenues sont stockés dans un arrayInsert :
-        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
-        System.out.println(arrayInsert[0]+arrayInsert[1]+arrayInsert[2]+arrayInsert[3]+arrayInsert[4]+arrayInsert[5]+arrayInsert[6]);
     }
 
     @FXML
     private void ActionSupprimer(MouseEvent event) {
+        supprimer();
+        annuler();
     }
     
     //Création des dictionnaires pour les comboboxes
@@ -279,7 +243,7 @@ public class AjoutController implements Initializable {
     //ajout éléments dans listSx
     public ObservableList<String> makelist (HashMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
     String line;
-    String file = "src\\projet1_annuaire\\donnees_Projet.txt";
+//    String file = "src\\projet1_annuaire\\donnees_Projet.txt";
     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
 
     while((line = br.readLine()) != null){
@@ -311,4 +275,121 @@ public class AjoutController implements Initializable {
         }
     
     }
+    
+    private void modifier() throws IOException{
+        FileWriter w= new FileWriter(file,false);
+        //Ecrire sur textField
+         Etudiant e = tableview.getSelectionModel().getSelectedItem();
+         
+//        tfNom.setText(e.getNom());
+//        tfPrenom.setText(e.getPrenom());
+//        cbSexe.setValue(e.getSexe());
+//        tfLocalisation.setText(e.getLocalisation());
+//        tfSecteur.setText(e.getSecteur());
+//        cbEtablissement.setValue(e.getEtablissement());
+//        tfRentree.setText(e.getRentree());
+        //
+        String nomProvisoire = tfNom.getText().toUpperCase();
+        String prenomProvisoire = tfPrenom.getText();
+        String firstLtr = prenomProvisoire.substring(0, 1);
+        String restLtrs = prenomProvisoire.substring(1, prenomProvisoire.length());
+        firstLtr = firstLtr.toUpperCase();
+        restLtrs = restLtrs.toLowerCase();
+        prenomProvisoire = firstLtr + restLtrs;
+        String localisationProvisoire = tfLocalisation.getText();
+        String sexeProvisoire = cbSexe.getValue();
+        String secteurProvisoire = tfSecteur.getText();
+        String etablissementProvisoire = cbEtablissement.getValue();
+        String rentreeProvisoire = tfRentree.getText();
+        
+//        
+//        //ajouter la nouvelle liste dans file
+//        for(Etudiant a:list){
+//                w.write(e.toString2());
+//            }
+//        try {
+//            w.close();
+            //les valeurs obtenues sont stockés dans un arrayInsert :
+//        } catch (IOException ex) {
+//            Logger.getLogger(AjoutController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
+//        System.out.println(arrayInsert[0]+arrayInsert[1]+arrayInsert[2]+arrayInsert[3]+arrayInsert[4]+arrayInsert[5]);
+//        
+//        String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+//        try {
+//            
+//            FileWriter fw = new FileWriter(filePath, true);            
+//            BufferedWriter bw = new BufferedWriter(fw);
+//            bw.write(arrayInsert[0] + ";" + arrayInsert[1] + ";" + arrayInsert[2] + ";" + arrayInsert[3] + ";" + arrayInsert[4] + ";" + arrayInsert[5] + ";" + arrayInsert[6] + "\n");
+//            //soloina an'ilay toString2
+//            bw.close();
+//
+//        } catch (IOException iOException) {
+//        }
+//        
+//            
+        
+    }
+    
+    private void supprimer(){
+         try{
+               FileWriter w= new FileWriter(file,false);
+
+             for(Etudiant e:list){
+                 if(e.getId()== tableview.getSelectionModel().getSelectedItem().getId()){
+                   list.remove(e);
+                   
+                   break;
+                 }
+             }
+             for(Etudiant e:resultat){
+                 if(e.getId()== tableview.getSelectionModel().getSelectedItem().getId()){
+                  resultat.remove(e);
+                   break;
+                 }
+             }
+             for(Etudiant e:list){
+                w.write(e.toString2());
+                
+             }
+             w.close();
+       }catch(IOException e){
+       }
+    }
+    
+    public void ajouter(){
+        //récupérer les valeurs dans les textField on mettant Nom en UpperCase et Prenom première lettre majuscule reste pas
+        String nomProvisoire = tfNom.getText().toUpperCase();
+        String prenomProvisoire = tfPrenom.getText();
+        
+        String firstLtr = prenomProvisoire.substring(0, 1);
+        String restLtrs = prenomProvisoire.substring(1, prenomProvisoire.length());
+        firstLtr = firstLtr.toUpperCase();
+        restLtrs = restLtrs.toLowerCase();
+        prenomProvisoire = firstLtr + restLtrs;
+        
+        String localisationProvisoire = tfLocalisation.getText();
+        String sexeProvisoire = cbSexe.getValue();
+        String secteurProvisoire = tfSecteur.getText();
+        String etablissementProvisoire = cbEtablissement.getValue();
+        String rentreeProvisoire = tfRentree.getText();
+        //les valeurs obtenues sont stockés dans un arrayInsert :
+        String[] arrayInsert = {rentreeProvisoire,localisationProvisoire,etablissementProvisoire,secteurProvisoire,sexeProvisoire,nomProvisoire,prenomProvisoire};
+        
+        //Utilisation de BufferedWriter pour ajouter les données reçu dans notre fichier .txt /!\fichier .txt d'essai : lien à changer plus tard ! 
+        try {
+            //Soloina an'ilay file efa déclaré eny ambony
+            String filePath = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+            FileWriter fw = new FileWriter(filePath, true);            
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(arrayInsert[0]+";"+arrayInsert[1]+";"+arrayInsert[2]+";"+arrayInsert[3]+";"+arrayInsert[4]+";"+arrayInsert[5]+";"+arrayInsert[6]+"\n");
+            //soloina an'ilay toString2
+            bw.close();
+        } catch (IOException iOException) {
+            System.out.println("Erreur ajout ::: "+iOException);
+        }
+    }
 }
+

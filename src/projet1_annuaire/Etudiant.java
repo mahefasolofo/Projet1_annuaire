@@ -26,6 +26,11 @@ public class Etudiant implements Comparable{
     public String toString() {
         return "Etudiant{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", etablissement=" + etablissement + ", localisation=" + localisation + ", secteur=" + secteur + ", rentree=" + rentree + ", id=" + id + '}';
     }
+    
+    public String toString2() {
+        return rentree+";"+localisation+";"+etablissement+";"+secteur+";"+sexe+";"+nom+";"+ prenom+"\n";
+    
+    }
 
     
 
