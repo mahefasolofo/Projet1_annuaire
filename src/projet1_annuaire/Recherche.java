@@ -5,15 +5,11 @@
  */
 package projet1_annuaire;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import static java.util.Collections.list;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import static javafx.collections.FXCollections.observableArrayList;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
 
 /**
  *
@@ -24,29 +20,56 @@ public class Recherche{
     ObservableList<Etudiant> resultat = observableArrayList();
     
     HomeController home = new HomeController();
+
     
+    /*
+    A FAIRE : 
+        - créer une methode pour charger les donnes dans une file 
+        - créer une méthode pour charger le tableau
+    
+    */
     
 
     public Recherche() {
     }
     
-    public void recherche(String fieldRecherche){
-        System.out.println(list);
+     public ObservableList<Etudiant> recherche(String fieldRecherche){
+        home.tableset();
         resultat.clear();
-        String[] arrayRecherche = fieldRecherche.toLowerCase().split(" ");
-            for (Etudiant e : list) {
-                for (String a : arrayRecherche) {
-                    if (e.toString().toLowerCase().contains(a)) {
-                        resultat.add(e);
+        
+        HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+        String[] arrayRecherche= fieldRecherche.toLowerCase().split(" ");
+        List<Integer> listId = new ArrayList<Integer>();
+        for(Etudiant e:list){
+            for (String a : arrayRecherche) {
+                if(e.toString().toLowerCase().contains(a)) {
+                    if(resultOccurence.containsKey(e.getId()) != true){
+                        resultOccurence.put(e.getId(), 1);
+                    }else{
+                        resultOccurence.merge(e.getId(), 1, Integer::sum);
                     }
+                    
                 }
+                     
             }
-         
-    }
-
-    public ObservableList<Etudiant> getResultat() {
-        System.out.println(resultat.toString());
+        
+        }
+        for ( int key : resultOccurence.keySet() ) {
+            if(resultOccurence.get(key) == arrayRecherche.length){
+                listId.add(key);
+            }
+        }
+        
+        for(Etudiant e:list){
+            for(int id : listId){
+                if(id == e.getId())
+                    resultat.add(e);
+            }
+        }
+        listId.clear();
+       
         return resultat;
+        
     }
-   
+    
 }

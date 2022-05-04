@@ -14,9 +14,11 @@ import java.io.InputStreamReader;
 
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableArrayList;
@@ -96,6 +98,7 @@ public class HomeController implements Initializable {
         
         labelUser.setText("Admin");
         tableset();
+        tableview.setItems(list);
     }    
     
     
@@ -201,9 +204,7 @@ public class HomeController implements Initializable {
             );
             
             Collections.sort(list);
-           
-            tableview.setItems(list);
-//            tableview.setItems(null);
+  
         }
         catch (FileNotFoundException ex) {
            
@@ -220,7 +221,6 @@ public class HomeController implements Initializable {
     //changer de class
     public ObservableList<String> makelist () throws FileNotFoundException, IOException{
         String line;
-        String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
         
         while((line = br.readLine()) != null){
@@ -263,18 +263,42 @@ public class HomeController implements Initializable {
     // changer de class
     public void recherche(){
         //pour rafraichier le tableau;
-//        tableview.getItems().clear();
+//        tableset();
 //        list.clear();
-        tableview.setItems(null);
         resultat.clear();
-        String[] arrayRecherche = fieldRecherche.getText().toLowerCase().split(" ");
-            for (Etudiant e : list) {
-                for (String a : arrayRecherche) {
-                    if (e.toString2().toLowerCase().contains(a)) {
-                        resultat.add(e);
+        tableview.setItems(null);
+        
+        HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+        String[] arrayRecherche= fieldRecherche.getText().toLowerCase().split(" ");
+        List<Integer> listId = new ArrayList<Integer>();
+        for(Etudiant e:list){
+            for (String a : arrayRecherche) {
+                if(e.toString().toLowerCase().contains(a)) {
+                    if(resultOccurence.containsKey(e.getId()) != true){
+                        resultOccurence.put(e.getId(), 1);
+                    }else{
+                        resultOccurence.merge(e.getId(), 1, Integer::sum);
                     }
+                    
                 }
+                     
             }
+        
+        }
+        for ( int key : resultOccurence.keySet() ) {
+            if(resultOccurence.get(key) == arrayRecherche.length){
+                listId.add(key);
+            }
+        }
+        
+        for(Etudiant e:list){
+            for(int id : listId){
+                if(id == e.getId())
+                    resultat.add(e);
+            }
+        }
+        listId.clear();
+        
         tableview.setItems(resultat);
     }
 

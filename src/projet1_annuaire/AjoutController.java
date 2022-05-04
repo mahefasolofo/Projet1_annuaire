@@ -34,6 +34,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import projet1_annuaire.Etudiant;
+import projet1_annuaire.HomeController;
+import projet1_annuaire.Recherche;
 
 /**
  * FXML Controller class
@@ -85,6 +88,10 @@ public class AjoutController implements Initializable {
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     String file = "src\\projet1_annuaire\\donnees_ajoutees.txt";
+    Recherche rech = new Recherche();
+
+    public AjoutController() {
+    }
     
     
     /**
@@ -161,13 +168,13 @@ public class AjoutController implements Initializable {
         return list;
     }
     
-    //Hash map utilisé dans recherche multicritère
-    HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+    
     
     public void recherche(){
         getEtudiantList();
         resultat.clear();
         tableview.setItems(null);
+        HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
         String[] arrayRecherche= fieldRecherche.getText().toLowerCase().split(" ");
         List<Integer> listId = new ArrayList<Integer>();
         for(Etudiant e:list){
@@ -178,11 +185,8 @@ public class AjoutController implements Initializable {
                     }else{
                         resultOccurence.merge(e.getId(), 1, Integer::sum);
                     }
-                    
-                }
-                     
+                 }
             }
-        
         }
         for ( int key : resultOccurence.keySet() ) {
             if(resultOccurence.get(key) == arrayRecherche.length){
@@ -230,6 +234,7 @@ public class AjoutController implements Initializable {
 
     @FXML
     private void actionRecherche(MouseEvent event) {
+//       tableview.setItems(rech.recherche(fieldRecherche.getText()));
        recherche();
     }
 
