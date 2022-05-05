@@ -45,6 +45,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.SVGPath;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 
@@ -154,15 +155,20 @@ public class HomeController implements Initializable {
     private void PrintTable(MouseEvent event) {
         PrinterJob job = PrinterJob.createPrinterJob();
         Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+        double scaleX = pageLayout.getPrintableWidth() / tableview.getBoundsInParent().getWidth();
+        double scaleY = pageLayout.getPrintableHeight() / tableview.getBoundsInParent().getHeight();
 
+        Scale scale = new Scale(scaleX, scaleY);
+        tableview.getTransforms().add(scale);
 
 
         if(job != null){
-        job.printPage(pageLayout,tableview);
-        job.endJob();
-        
-}
+            job.printPage(pageLayout,tableview);
+            job.endJob();
+            tableview.getTransforms().remove(scale);
+        }
+
     }
     
 //Méthodes fonctionnalités
