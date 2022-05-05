@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TreeMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,7 +39,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import projet1_annuaire.Etudiant;
 import projet1_annuaire.HomeController;
-import projet1_annuaire.Recherche;
+
 
 /**
  * FXML Controller class
@@ -89,7 +92,7 @@ public class AjoutController implements Initializable {
     ObservableList<Etudiant> list = observableArrayList();
     ObservableList<Etudiant> resultat = observableArrayList();
     String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
-    Recherche rech = new Recherche();
+    
     //Création des dictionnaires pour les comboboxes
     TreeMap <String, Integer> dictSexe = new TreeMap <>();
     ObservableList <String> listSexe = FXCollections.observableArrayList();
@@ -100,8 +103,7 @@ public class AjoutController implements Initializable {
     TreeMap <String, Integer> dictSecteur = new TreeMap <>();
     ObservableList <String> listSecteur = FXCollections.observableArrayList();
     int frequence;
-    
-    
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
     
 //Constructeur par défaut
     public AjoutController() {
@@ -129,6 +131,10 @@ public class AjoutController implements Initializable {
         ajouter();
         //Effacer les entrées dans les textField
         annuler();
+         alert.setTitle("Information");
+         alert.setHeaderText(null);
+         alert.setContentText("Etudiant Enregistré!");
+         alert.showAndWait();
         
     }
 
@@ -163,7 +169,7 @@ public class AjoutController implements Initializable {
     private void ActionModifier(MouseEvent event) throws IOException {
         modifier();
         annuler();
-        
+    
     }
 
     @FXML
@@ -420,7 +426,5 @@ public class AjoutController implements Initializable {
         }
     
     }
-    
-    
 }
 

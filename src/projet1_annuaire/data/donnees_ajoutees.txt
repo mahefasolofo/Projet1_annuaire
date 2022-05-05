@@ -35,6 +35,7 @@
 2001-02;Maisons-Alfort;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;ANDRE-MASSE;Franck
 2001-02;Brive-la-Gaillarde;Universités;Établissements publics;Masculin;ANDREY;Florence
 2022-03;Antananarivo;Universités de technologie (UT);Établissements privés;Feminin;ANDRIAMANJAY;Miora
+2022;Faravohitra;Etablissements d'enseignement universitaire privés;Établissements privés;Feminin;ANDRIAMANJAY;Miora
 2001-02;Grenoble;Écoles juridiques et administratives;Établissements privés;Masculin;ANDRZEJEWSKI;Rodolphe
 2001-02;Lons-le-Saunier;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;ANDRZEJEWSKI;Estelle
 2001-02;Auvergne-Rhône-Alpes;Classes préparatoires aux grandes écoles (CPGE);Établissements privés;Feminin;ANGELOT;Sylviane
@@ -147,6 +148,7 @@
 2001-02;Tours;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BARTZEN;Eric
 2001-02;Saint-Étienne;Écoles juridiques et administratives;Établissements publics;Feminin;BASSET;Jean-François
 2001-02;Bourg-en-Bresse;Autres écoles de spécialités diverses;Établissements publics;Masculin;BASSET;Jean-François
+2001-02;Toulon;Autres écoles de spécialités diverses;Établissements publics;Feminin;BASSET;Jean-françois
 2001-02;Vienne;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BASTIAND;Jacques
 2001-02;Corrèze;Universités;Établissements publics;Feminin;BATHIAS;Joannès
 2001-02;Paris  3e;Autres formations d'ingénieurs;Établissements publics;Masculin;BATTISTELLA;Michel
@@ -2999,4 +3001,3 @@
 2001-02;Haute-Vienne;Total des formations d'enseignement supérieur;Établissements publics;Masculin;ZENAGUI;Dalila
 2001-02;Val-d'Oise;Autres formations d'ingénieurs;Établissements publics;Feminin;ZIEGLER;Christophe
 2001-02;Hauts-de-Seine;Classes préparatoires aux grandes écoles (CPGE);Établissements privés;Masculin;ZIOSI;Pierre
-2001-02;Toulon;Autres écoles de spécialités diverses;Établissements publics;Feminin;BASSET;Jean-françois

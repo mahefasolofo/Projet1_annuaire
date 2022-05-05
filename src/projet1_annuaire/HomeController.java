@@ -11,8 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.Map.Entry;
@@ -25,7 +27,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -36,6 +40,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
 
 /**
@@ -123,6 +128,21 @@ public class HomeController implements Initializable {
     @FXML
     private void showStatistique(MouseEvent event) {
         loadpage("statistique");
+    }
+    
+    @FXML
+    private void Deconnexion(MouseEvent event) throws IOException {
+        URL url = Paths.get("src\\projet1_annuaire\\login.fxml").toUri().toURL();
+        Parent source = FXMLLoader.load(url);
+        Scene scene = new Scene(source);
+        Stage stage = new Stage();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setX(600);
+        stage.setY(200);
+        stage.setScene(scene);
+        stage.show();
+        
+        
     }
     
 //Méthodes fonctionnalités
@@ -251,10 +271,6 @@ public class HomeController implements Initializable {
         borderpane.setCenter(source);
     }
     
-    
-
-    
-    
 //Getters & Setters    
     public TableView<Etudiant> getTableview() {
         return tableview;
@@ -276,31 +292,4 @@ public class HomeController implements Initializable {
     public void setList(ObservableList<Etudiant> list) {
         this.list = list;
     }
-    
-     //A VERIFIER /!\
-//    public ObservableList<String> makelist () throws FileNotFoundException, IOException{
-//        String line;
-//        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
-//        
-//        while((line = br.readLine()) != null){
-//            String[] provisoireArray = line.split(";");
-//            if (dictSexe.containsKey(provisoireArray[4])){
-//                    frequence = dictSexe.get(provisoireArray[4]);
-//                    frequence++;
-//                    dictSexe.put(provisoireArray[4], frequence);
-//                } else {
-//                    dictSexe.put(provisoireArray[4], frequence);
-//                    
-//                }
-//         }
-//        dictSexe.entrySet().forEach((entry) -> {
-//            //System.out.println(entry.getKey());
-//                
-//            listSexe.add(entry.getKey());
-//                
-//        });
-//        return listSexe;
-//    }
-  
-
 }

@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -57,6 +58,7 @@ public class LoginController implements Initializable {
     HashMap<String,String> loginInfo = new HashMap<>();
     File file = new File("src\\projet1_annuaire\\data\\data.csv");
     Hashage hash = new Hashage();
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);//Instanciation Message Alert!!!
     
 //Actions & methodes
     @FXML
@@ -82,7 +84,11 @@ public class LoginController implements Initializable {
                     
                   
             } else {
-                message.setText("Erreur");
+                //Dialogue d'Information!!
+                alert.setTitle("Alert");
+                alert.setHeaderText(null);
+                alert.setContentText("Mot de Passe Erroné!!!");
+                alert.showAndWait();
             }
         } else{message.setText("Utilisateur non enregistré ");System.out.println(System.getProperty("user.dir")) ;}
         }catch (FileNotFoundException fileNotFoundException) {
