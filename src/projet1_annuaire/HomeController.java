@@ -27,6 +27,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -143,6 +148,21 @@ public class HomeController implements Initializable {
         stage.show();
         
         
+    }
+    
+    @FXML
+    private void PrintTable(MouseEvent event) {
+        PrinterJob job = PrinterJob.createPrinterJob();
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+
+
+
+        if(job != null){
+        job.printPage(pageLayout,tableview);
+        job.endJob();
+        
+}
     }
     
 //Méthodes fonctionnalités
@@ -292,4 +312,6 @@ public class HomeController implements Initializable {
     public void setList(ObservableList<Etudiant> list) {
         this.list = list;
     }
+
+    
 }
