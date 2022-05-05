@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderpane" maxHeight="768.0" maxWidth="1910.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.HomeController">
+<BorderPane fx:id="borderpane" maxHeight="768.0" maxWidth="1910.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1758.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.HomeController">
    <top>
-      <Pane prefHeight="66.0" prefWidth="1143.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER_RIGHT">
+      <Pane prefHeight="66.0" prefWidth="1143.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER_RIGHT">
          <BorderPane.margin>
             <Insets left="191.0" />
          </BorderPane.margin>
@@ -31,7 +32,7 @@
          </children></Pane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #F7F7F7;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="702.0" prefWidth="1614.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
          <children>
             <HBox layoutX="497.0" layoutY="36.0" prefHeight="55.0" prefWidth="549.0" spacing="15.0">
                <children>
@@ -45,7 +46,7 @@
             </HBox>
             <Pane layoutX="25.0" layoutY="105.0" prefHeight="559.0" prefWidth="1510.0">
                <children>
-                  <TableView fx:id="tableview" layoutX="1.0" prefHeight="559.0" prefWidth="1506.0">
+                  <TableView fx:id="tableview" layoutX="1.0" prefHeight="559.0" prefWidth="1506.0" style="-fx-background-color: #ffff;">
                     <columns>
                       <TableColumn fx:id="colid" text="ID" />
                       <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="150.0" text="Nom" />
@@ -62,25 +63,50 @@
          </children></AnchorPane>
    </center>
    <left>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="768.0" prefWidth="184.0" style="-fx-background-color: #233c46;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="148.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" />
-            <Button mnemonicParsing="false" onMouseClicked="#home" prefHeight="53.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#eeeaea">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#showAjout" prefHeight="53.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Gestion" textFill="#eeeaea">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#showStatistique" prefHeight="53.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Statistique" textFill="#eeeaea">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-         </children>
+      <AnchorPane style="-fx-background-color: #233c46;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="-66.0" />
          </BorderPane.margin>
-      </VBox>
+         <children>
+            <VBox layoutY="268.0" prefHeight="500.0" prefWidth="224.0" style="-fx-background-color: #233c46;">
+               <children>
+                  <Button lineSpacing="2.0" mnemonicParsing="false" onMouseClicked="#home" prefHeight="53.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#eeeaea" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <SVGPath content="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z " fill="WHITE" scaleX="1.5" scaleY="1.5" translateX="-17.0" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#showAjout" prefHeight="53.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Gestion" textFill="#eeeaea" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <SVGPath content="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z" fill="WHITE" scaleX="1.5" scaleY="1.5" translateX="-15.0" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#showStatistique" prefHeight="53.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Statistique" textFill="#eeeaea" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <SVGPath content="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" fill="WHITE" scaleX="1.5" scaleY="1.5" translateX="-7.0" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fitHeight="148.0" fitWidth="224.0" layoutX="38.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo/logoBrain.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="84.0" layoutY="41.0" text="BRAIN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </left>
 </BorderPane>

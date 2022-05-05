@@ -25,8 +25,8 @@ public class Projet1_annuaire extends Application {
         
         Scene scene = new Scene(root);
         
-        stage.setTitle("Ankoay");
-        File f = new File("C:\\Users\\Inclusiv\\Pictures\\icones\\icon.png");
+        stage.setTitle("BRAIN");
+        File f = new File("src\\logo\\logoBrain.png");
         Image icon = new Image(f.toURI().toString());
         stage.getIcons().add(icon);
         

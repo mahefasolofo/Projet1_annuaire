@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<AnchorPane centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1514.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
+<AnchorPane centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1514.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet1_annuaire.AjoutController">
    <children>
       <VBox layoutX="1060.0" layoutY="99.0" prefHeight="512.0" prefWidth="424.0" spacing="10.0">
          <children>
@@ -44,7 +44,7 @@
       </HBox>
       <Pane layoutX="48.0" layoutY="96.0" prefHeight="593.0" prefWidth="857.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="553.0" AnchorPane.topAnchor="96.0">
          <children>
-            <TableView fx:id="tableview" layoutX="8.0" onMouseClicked="#tvMouseAction" prefHeight="560.0" prefWidth="840.0">
+            <TableView fx:id="tableview" layoutX="8.0" onMouseClicked="#tvMouseAction" prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #ffff;">
                <columns>
                   <TableColumn fx:id="colid" text="ID" />
                   <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="150.0" text="Nom" />
