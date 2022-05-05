@@ -54,7 +54,7 @@ public class AjoutController implements Initializable {
     @FXML
     private TextField tfLocalisation;
     @FXML
-    private TextField tfSecteur;
+    private ComboBox<String> cbSecteur;
     @FXML
     private ComboBox<String> cbEtablissement;
     @FXML
@@ -93,9 +93,14 @@ public class AjoutController implements Initializable {
     //Création des dictionnaires pour les comboboxes
     HashMap <String, Integer> dictSexe = new HashMap <>();
     ObservableList <String> listSexe = FXCollections.observableArrayList();
+    
     HashMap <String, Integer> dictEtablissement = new HashMap <>();
     ObservableList <String> listEtablissement = FXCollections.observableArrayList();
+    
+    HashMap <String, Integer> dictSecteur = new HashMap <>();
+    ObservableList <String> listSecteur = FXCollections.observableArrayList();
     int frequence;
+    
     
     
 //Constructeur par défaut
@@ -112,6 +117,7 @@ public class AjoutController implements Initializable {
        
        setCombobox(cbSexe, listSexe, dictSexe, 4);
        setCombobox(cbEtablissement, listEtablissement , dictEtablissement, 2);
+       setCombobox(cbSecteur, listSecteur , dictSecteur, 3);
        getEtudiantList();
        tableview.setItems(list);
         
@@ -147,7 +153,7 @@ public class AjoutController implements Initializable {
         tfPrenom.setText(e.getPrenom());
         cbSexe.setValue(e.getSexe());
         tfLocalisation.setText(e.getLocalisation());
-        tfSecteur.setText(e.getSecteur());
+        cbSecteur.setValue(e.getSecteur());
         cbEtablissement.setValue(e.getEtablissement());
         tfId.setText(""+e.getId());
         tfRentree.setText(e.getRentree());
@@ -276,7 +282,7 @@ public class AjoutController implements Initializable {
         prenomProvisoire = firstLtr + restLtrs;
         String localisationProvisoire = tfLocalisation.getText();
         String sexeProvisoire = cbSexe.getValue();
-        String secteurProvisoire = tfSecteur.getText();
+        String secteurProvisoire = cbSecteur.getValue();
         String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         int idProvisoire = Integer.parseInt(tfId.getText());
@@ -344,7 +350,7 @@ public class AjoutController implements Initializable {
         
         String localisationProvisoire = tfLocalisation.getText();
         String sexeProvisoire = cbSexe.getValue();
-        String secteurProvisoire = tfSecteur.getText();
+        String secteurProvisoire = cbSecteur.getValue();
         String etablissementProvisoire = cbEtablissement.getValue();
         String rentreeProvisoire = tfRentree.getText();
         //les valeurs obtenues sont stockés dans un arrayInsert :
@@ -371,7 +377,7 @@ public class AjoutController implements Initializable {
         tfPrenom.setText("");
         tfLocalisation.setText("");
         cbSexe.setValue("");
-        tfSecteur.setText("");
+        cbSecteur.setValue("");
         cbEtablissement.setValue("");
         tfRentree.setText("");
         tfId.setText("");

@@ -34,7 +34,7 @@
 2001-02;Limeil-Brévannes;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Masculin;ANDRE-MASSE;Franck
 2001-02;Maisons-Alfort;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;ANDRE-MASSE;Franck
 2001-02;Brive-la-Gaillarde;Universités;Établissements publics;Masculin;ANDREY;Florence
-2022-03;Antananarivo;Universités de technologie (UT);Etablissement Privé;Feminin;ANDRIAMANJAY;Miora
+2022-03;Antananarivo;Universités de technologie (UT);Établissements privés;Feminin;ANDRIAMANJAY;Miora
 2001-02;Grenoble;Écoles juridiques et administratives;Établissements privés;Masculin;ANDRZEJEWSKI;Rodolphe
 2001-02;Lons-le-Saunier;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;ANDRZEJEWSKI;Estelle
 2001-02;Auvergne-Rhône-Alpes;Classes préparatoires aux grandes écoles (CPGE);Établissements privés;Feminin;ANGELOT;Sylviane
@@ -1673,6 +1673,7 @@
 2001-02;Loiret;Écoles paramédicales et sociales;Établissements publics;Masculin;JOLY;Fabienne
 2001-02;Martinique;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;JOLY;Edith
 2001-02;Aubusson;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;JOLY;Christophe
+2021;faravohitra;Écoles normales supérieures (ENS);Établissements privés;Masculin;JOSE;Brian
 2001-02;Aveyron;Universités;Établissements publics;Feminin;JOSEPH;Pascal
 2001-02;Nouvelle-Aquitaine;Écoles juridiques et administratives;Établissements publics;Masculin;JOSEPH;Dany
 2001-02;Château-Gontier;Total des formations d'enseignement supérieur;Établissements privés;Masculin;JOSEPHINE;Kathy
@@ -2512,8 +2513,7 @@
 2001-02;Narbonne;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Feminin;RAFFIER;Colette
 2001-02;Sainte-Adresse;Autres écoles de spécialités diverses;Établissements publics;Feminin;RAFFIN;Bruno
 2001-02;Vosges;Autres formations d'ingénieurs;Établissements privés;Feminin;RAISIN;François
-2021-03;Fianarantsoa;Universités;Privé;Masculin;RAKOTO;Jean
-2002-02;Antananarivo;Grands établissements MENESR;Privé;Masculin;RALAIMONGO;Jean
+2021-03;Fianarantsoa;Universités;Établissements privés;Masculin;RAKOTO;Jean
 2001-02;Cergy;Total des formations d'enseignement supérieur;Établissements privés;Masculin;RAMON;Michel
 2001-02;Évreux;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;RAMOS;Yvonne
 2001-02;Oise;Universités de technologie (UT);Établissements publics;Feminin;RAMPIN;Christophe
@@ -2999,4 +2999,4 @@
 2001-02;Haute-Vienne;Total des formations d'enseignement supérieur;Établissements publics;Masculin;ZENAGUI;Dalila
 2001-02;Val-d'Oise;Autres formations d'ingénieurs;Établissements publics;Feminin;ZIEGLER;Christophe
 2001-02;Hauts-de-Seine;Classes préparatoires aux grandes écoles (CPGE);Établissements privés;Masculin;ZIOSI;Pierre
-2021;faravohitra;Écoles normales supérieures (ENS);Prive;Masculin;JOSE;Brian
+2002-02;Antananarivo;Grands établissements MENESR;Établissements privés;Masculin;RALAIMONGO;Jean

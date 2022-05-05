@@ -25,7 +25,7 @@
             <Label text="Localisation : " />
             <TextField fx:id="tfLocalisation" />
             <Label text="Secteur : " />
-            <TextField fx:id="tfSecteur" />
+            <ComboBox fx:id="cbSecteur" prefHeight="31.0" prefWidth="280.0" />
             <Label text="Etablissement : " />
             <ComboBox fx:id="cbEtablissement" prefHeight="31.0" prefWidth="450.0" />
             <Label text="Date rentrée" />

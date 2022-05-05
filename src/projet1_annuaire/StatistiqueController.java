@@ -25,6 +25,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -39,15 +40,22 @@ public class StatistiqueController implements Initializable {
     private NumberAxis genreOrdonnee;
     @FXML
     private CategoryAxis etablissementAbscisse;
+    @FXML
+    private ComboBox<?> cbStat;
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+       
         XYChart.Series graphe = new XYChart.Series<>();
         String line;
         Map<String,Integer> map=new HashMap<>();
+        
       
         String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
         BufferedReader br = null;
@@ -87,7 +95,7 @@ public class StatistiqueController implements Initializable {
             Logger.getLogger(StatistiqueController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-           graphe.setName(" Nombre d'Etudiants trié par Genre sur chaque Etablissements ");
+           graphe.setName(" Effectif des étudiants pour chaque Etablissements ");
            for (Map.Entry<String, Integer> entry: map.entrySet()){
            graphe.getData().add(new XYChart.Data(entry.getValue(), entry.getKey()));
            }
