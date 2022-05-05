@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 import java.util.Collections;
 import java.util.List;
@@ -81,7 +81,7 @@ public class HomeController implements Initializable {
     LoginController loginC = new LoginController();
     
     //CREATION DES DICTIONNAIRES ET LISTES /!\
-    HashMap <String, Integer> dictSexe = new HashMap <>();
+    TreeMap <String, Integer> dictSexe = new TreeMap <>();
     ObservableList <String> listSexe = FXCollections.observableArrayList();
     int frequence;
     private int id = 1;
@@ -206,7 +206,7 @@ public class HomeController implements Initializable {
         resultat.clear();
         tableview.setItems(null);
         
-        HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+        TreeMap<Integer, Integer> resultOccurence = new TreeMap<Integer, Integer>();
         String[] arrayRecherche= tfRecherche.getText().toLowerCase().split(" ");
         List<Integer> listId = new ArrayList<Integer>();
         for(Etudiant e:list){
@@ -265,7 +265,7 @@ public class HomeController implements Initializable {
     }
     
     //A VERIFIER SI UTILE
-    public HashMap<String, Integer> getDictSexe() {
+    public TreeMap<String, Integer> getDictSexe() {
         return dictSexe;
     }
     

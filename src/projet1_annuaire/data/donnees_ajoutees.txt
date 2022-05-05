@@ -146,7 +146,6 @@
 2001-02;Poitiers;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BARTHELET;Annaëlle
 2001-02;Tours;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BARTZEN;Eric
 2001-02;Saint-Étienne;Écoles juridiques et administratives;Établissements publics;Feminin;BASSET;Jean-François
-2001-02;Toulon;Sections de techniciens supérieurs (STS) et assimilés;Établissements publics;Feminin;BASSET;Jean-François
 2001-02;Bourg-en-Bresse;Autres écoles de spécialités diverses;Établissements publics;Masculin;BASSET;Jean-François
 2001-02;Vienne;Total des formations d'enseignement supérieur;Établissements publics;Feminin;BASTIAND;Jacques
 2001-02;Corrèze;Universités;Établissements publics;Feminin;BATHIAS;Joannès
@@ -2514,6 +2513,7 @@
 2001-02;Sainte-Adresse;Autres écoles de spécialités diverses;Établissements publics;Feminin;RAFFIN;Bruno
 2001-02;Vosges;Autres formations d'ingénieurs;Établissements privés;Feminin;RAISIN;François
 2021-03;Fianarantsoa;Universités;Établissements privés;Masculin;RAKOTO;Jean
+2002-02;Antananarivo;Grands établissements MENESR;Établissements privés;Masculin;RALAIMONGO;Jean
 2001-02;Cergy;Total des formations d'enseignement supérieur;Établissements privés;Masculin;RAMON;Michel
 2001-02;Évreux;Sections de techniciens supérieurs (STS) et assimilés;Établissements privés;Masculin;RAMOS;Yvonne
 2001-02;Oise;Universités de technologie (UT);Établissements publics;Feminin;RAMPIN;Christophe
@@ -2999,4 +2999,4 @@
 2001-02;Haute-Vienne;Total des formations d'enseignement supérieur;Établissements publics;Masculin;ZENAGUI;Dalila
 2001-02;Val-d'Oise;Autres formations d'ingénieurs;Établissements publics;Feminin;ZIEGLER;Christophe
 2001-02;Hauts-de-Seine;Classes préparatoires aux grandes écoles (CPGE);Établissements privés;Masculin;ZIOSI;Pierre
-2002-02;Antananarivo;Grands établissements MENESR;Établissements privés;Masculin;RALAIMONGO;Jean
+2001-02;Toulon;Autres écoles de spécialités diverses;Établissements publics;Feminin;BASSET;Jean-françois

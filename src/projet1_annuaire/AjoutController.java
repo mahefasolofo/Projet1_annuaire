@@ -16,7 +16,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -91,13 +91,13 @@ public class AjoutController implements Initializable {
     String file = "src\\projet1_annuaire\\data\\donnees_ajoutees.txt";
     Recherche rech = new Recherche();
     //Création des dictionnaires pour les comboboxes
-    HashMap <String, Integer> dictSexe = new HashMap <>();
+    TreeMap <String, Integer> dictSexe = new TreeMap <>();
     ObservableList <String> listSexe = FXCollections.observableArrayList();
     
-    HashMap <String, Integer> dictEtablissement = new HashMap <>();
+    TreeMap <String, Integer> dictEtablissement = new TreeMap <>();
     ObservableList <String> listEtablissement = FXCollections.observableArrayList();
     
-    HashMap <String, Integer> dictSecteur = new HashMap <>();
+    TreeMap <String, Integer> dictSecteur = new TreeMap <>();
     ObservableList <String> listSecteur = FXCollections.observableArrayList();
     int frequence;
     
@@ -233,7 +233,7 @@ public class AjoutController implements Initializable {
         getEtudiantList();
         resultat.clear();
         tableview.setItems(null);
-        HashMap<Integer, Integer> resultOccurence = new HashMap<Integer, Integer>();
+        TreeMap<Integer, Integer> resultOccurence = new TreeMap<Integer, Integer>();
         String[] arrayRecherche= tfRecherche.getText().toLowerCase().split(" ");
         List<Integer> listId = new ArrayList<Integer>();
         for(Etudiant e:list){
@@ -386,7 +386,7 @@ public class AjoutController implements Initializable {
     
 //Constitution Combobox 
     
-    public ObservableList<String> makelist (HashMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
+    public ObservableList<String> makelist (TreeMap <String, Integer> dictionnaire, ObservableList <String> liste, int rang) throws FileNotFoundException, IOException{
     String line;
 
     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),StandardCharsets.UTF_8));
@@ -411,7 +411,7 @@ public class AjoutController implements Initializable {
     return liste;
     }
     
-    public void setCombobox (ComboBox<String> combobox, ObservableList <String> liste, HashMap <String, Integer> dictionnaire, int rang){
+    public void setCombobox (ComboBox<String> combobox, ObservableList <String> liste, TreeMap <String, Integer> dictionnaire, int rang){
         try {
             makelist (dictionnaire, liste, rang);
             combobox.setItems(liste);
